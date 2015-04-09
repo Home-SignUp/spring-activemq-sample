@@ -20,7 +20,7 @@ Now that ActiveMQ has started we can open the admin console by navigating to [ht
 
 ![Figure 6.0 Messages pushed to TestQueueTwo](http://3.bp.blogspot.com/-vEUtTi0eHDI/UFZNmzNpmAI/AAAAAAAAAFo/nhrX-FIFOC8/s1600/MessageQueue-Consumed-Messages.png)
 
-Contents: 
+###activemq spring 3 example:
 
 * `Summary`: If you want to run this tutorial locally you can grab the full source code ([here](https://docs.google.com/folder/d/0B_SZOyniHfc1YXE0M3BER242X28/edit)).
 
