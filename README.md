@@ -23,3 +23,5 @@ Now that ActiveMQ has started we can open the admin console by navigating to [ht
 Contents: 
 
 * `Summary`: If you want to run this tutorial locally you can grab the full source code ([here](https://docs.google.com/folder/d/0B_SZOyniHfc1YXE0M3BER242X28/edit)).
+
+* `Другие ссылки`: [Spring JMS with ActiveMQ – hello world example – send message](http://shengwangi.blogspot.com/2014/10/spring-jms-with-activemq-helloworld-example-send.html), [Simple Spring JMS](http://www.springbyexample.org/examples/simple-spring-jms.html)
