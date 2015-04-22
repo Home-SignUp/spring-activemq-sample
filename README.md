@@ -25,3 +25,12 @@ Now that ActiveMQ has started we can open the admin console by navigating to [ht
 * `Summary`: If you want to run this tutorial locally you can grab the full source code ([here](https://docs.google.com/folder/d/0B_SZOyniHfc1YXE0M3BER242X28/edit)).
 
 * `Другие ссылки`: [Spring JMS with ActiveMQ – hello world example – send message](http://shengwangi.blogspot.com/2014/10/spring-jms-with-activemq-helloworld-example-send.html), [Simple Spring JMS](http://www.springbyexample.org/examples/simple-spring-jms.html)
+
+
+###ActiveMQ Installation For Windows
+
+* `Installation Procedure for Windows`: [http://apacheactivemq.blogspot.com/2011/11/activemq-installation-procedure-for.html](http://apacheactivemq.blogspot.com/2011/11/activemq-installation-procedure-for.html)
+
+* `Introduction`: [http://activemq.apache.org/getting-started.html#GettingStarted-WindowsBinaryInstallation](http://activemq.apache.org/getting-started.html#GettingStarted-WindowsBinaryInstallation)
+
+* `apache-activemq-5.11.1-bin.zip`: [http://apache.volia.net/activemq/5.11.1/apache-activemq-5.11.1-bin.zip](http://apache.volia.net/activemq/5.11.1/apache-activemq-5.11.1-bin.zip)
