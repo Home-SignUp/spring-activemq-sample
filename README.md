@@ -34,3 +34,10 @@ Now that ActiveMQ has started we can open the admin console by navigating to [ht
 * `Introduction`: [http://activemq.apache.org/getting-started.html#GettingStarted-WindowsBinaryInstallation](http://activemq.apache.org/getting-started.html#GettingStarted-WindowsBinaryInstallation)
 
 * `apache-activemq-5.11.1-bin.zip`: [http://apache.volia.net/activemq/5.11.1/apache-activemq-5.11.1-bin.zip](http://apache.volia.net/activemq/5.11.1/apache-activemq-5.11.1-bin.zip)
+
+
+###Проверено
+
+* `работает на jdk1.8 и Tomcat-8`: (в Tomcat-7 почему-то ругается на '.../servlet-api-2.4')
+
+* `TestQueueOne >> TestQueueTwo`: (предварительно запустить ActiveMQ 'apache-activemq-5.11.1\bin>activemq.bat start') нужно послать из (web-админки) [ActiveMQ](http://localhost:8161/admin/index.jsp) N-сообщений от (брокера) '[TestQueueOne](http://localhost:8161/admin/send.jsp?JMSDestination=TestQueueOne&JMSDestinationType=queue)'. После этого программа будет слушать очередь сообщений и перенаправит их на (подписчика) 'TestQueueTwo'.
