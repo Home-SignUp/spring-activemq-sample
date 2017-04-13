@@ -17,7 +17,7 @@ import com.websystique.springmvc.service.OrderInventoryService;
 public class MessageReceiver {
 
 	static final Logger LOG = LoggerFactory.getLogger(MessageReceiver.class);
-	private static final String ORDER_QUEUE = "order-queue";
+	private static final String ORDER_QUEUE = "order-queue"; // Очередь заказов
 	
 	@Autowired
 	OrderInventoryService orderInventoryService;

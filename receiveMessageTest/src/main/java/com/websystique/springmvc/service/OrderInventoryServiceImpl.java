@@ -18,19 +18,23 @@ public class OrderInventoryServiceImpl implements OrderInventoryService{
 	
 	@Override
 	public void processOrder(Order order) {
-		
-		//Perform any business logic.
-		
+		/* Perform any business logic. */
 		InventoryResponse response = prepareResponse(order);
-		LOG.info("Inventory : sending order confirmation {}", response);
+		LOG.info("Приемная : отправка заказа подтверждения {}", response); // Inventory : sending order confirmation
 		messageSender.sendMessage(response);
 	}
-	
+
+    /**
+     * Эммитация получения ответа от клиента:
+     * *************************************
+     * @param order
+     * @return
+     */
 	private InventoryResponse prepareResponse(Order order){
 		InventoryResponse response = new InventoryResponse();
 		response.setOrderId(order.getOrderId());
 		response.setReturnCode(200);
-		response.setComment("Order Processed successfully");
+		response.setComment("Заказ успешно обработан"); // Order Processed successfully
 		return response;
 	}
 

@@ -17,7 +17,7 @@ import com.websystique.springmvc.service.OrderService;
 public class MessageReceiver {
 	static final Logger LOG = LoggerFactory.getLogger(MessageReceiver.class);
 
-	private static final String ORDER_RESPONSE_QUEUE = "order-response-queue";
+	private static final String ORDER_RESPONSE_QUEUE = "order-response-queue"; // получили подтверждение от продавца
 	
 	@Autowired
 	OrderService orderService;

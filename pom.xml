@@ -19,7 +19,7 @@
 	</properties>
 
     <modules>
-        <module>spring4MVCJmsActiveMQExample</module>
-        <module>spring4MVCJmsActiveMQOrderInventory</module>
+        <module>sendMessage</module>
+        <module>receiveMessageTest</module>
     </modules>
 </project>

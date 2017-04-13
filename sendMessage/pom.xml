@@ -9,7 +9,7 @@
 		<artifactId>spring4MVCJmsActiveMQ</artifactId>
 		<version>1.0.0</version>
     </parent>
-    <artifactId>spring4MVCJmsActiveMQExample</artifactId>
+    <artifactId>sendMessage</artifactId>
     <version>${version}</version>
 
     <packaging>war</packaging>

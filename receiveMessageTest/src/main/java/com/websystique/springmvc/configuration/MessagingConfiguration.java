@@ -10,9 +10,8 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class MessagingConfiguration {
 
-	private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
-	
-	private static final String ORDER_QUEUE = "order-queue";
+    private static final String   DEFAULT_BROKER_URL = "tcp://localhost:61616"; // JMS-сервер сообщений
+    private static final String ORDER_RESPONSE_QUEUE = "order-response-queue"; // Подтверждение от продавца
 
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory(){
@@ -26,8 +25,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplate(){
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(ORDER_QUEUE);
+		template.setDefaultDestinationName(ORDER_RESPONSE_QUEUE);
 		return template;
 	}
-	
 }
