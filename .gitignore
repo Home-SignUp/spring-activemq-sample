@@ -1,4 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
-spring-activemq-sample.iml
+*.iml
 target
