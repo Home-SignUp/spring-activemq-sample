@@ -10,6 +10,6 @@
     </head>
 
     <body>
-        Welcome to CrazyProducts Order Inventory System.
+        Podtverdit zakaz.
     </body>
 </html>

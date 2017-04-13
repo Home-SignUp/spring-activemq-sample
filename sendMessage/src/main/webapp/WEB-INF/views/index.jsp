@@ -13,9 +13,9 @@
 <body>
 
 	<div class="generic-container">
-	<div class="well lead">Welcome to CrazyDeals [With JMS Magic]</div>
+	<div class="well lead">Dobro poshalovat v systemu zakazov</div>
 			<span class="well floatRight">
-				<a href="<c:url value='/newOrder' />">Place an order</a>
+				<a href="<c:url value='/newOrder' />">Oformit zakaz</a>
 			</span>
 	</div>
 

@@ -27,18 +27,18 @@ public class AppController {
 	public String prepareOrder(ModelMap model) {
 		Order order = new Order();
 		model.addAttribute("order", order);
-		return "order";
+		return "createOrder";
 	}
 
 	@RequestMapping(value = { "/newOrder" }, method = RequestMethod.POST)
 	public String sendOrder(@Valid Order order, BindingResult result,
 			ModelMap model) {
 		if (result.hasErrors()) {
-			return "order";
+			return "createOrder";
 		}
 		orderService.sendOrder(order);
 		model.addAttribute("success", "Order for " + order.getProductName() + " registered.");
-		return "ordersuccess";
+		return "success";
 	}
 	
 	@RequestMapping(value = { "/checkStatus" }, method = RequestMethod.GET)

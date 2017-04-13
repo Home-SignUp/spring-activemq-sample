@@ -11,7 +11,7 @@ public class AppController {
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String prepareProduct(ModelMap model) {
-		return "index";
+		return "confirmOrder";
 	}
 
 }
