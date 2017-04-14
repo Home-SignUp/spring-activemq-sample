@@ -2,17 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <name>(Client) Spring + Jms + ActiveMQ</name>
+    <name>Core</name>
 
     <parent>
         <groupId>com.order</groupId>
 		<artifactId>spring4MVCJmsActiveMQ</artifactId>
 		<version>1.0.0</version>
     </parent>
-    <artifactId>clientMessage</artifactId>
+    <artifactId>core</artifactId>
     <version>${version}</version>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 	
 	<dependencies>
 		<dependency>
@@ -71,31 +71,6 @@
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version>
 		</dependency>
-
-        <!-- Core -->
-        <dependency>
-            <groupId>com.order</groupId>
-            <artifactId>core</artifactId>
-            <version>${version}</version>
-        </dependency>
 	</dependencies>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.4</version>
-					<configuration>
-						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>clientMessage</warName>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<finalName>clientMessage</finalName>
-	</build>
 </project>
  
