@@ -15,15 +15,14 @@ import com.websystique.springmvc.service.OrderService;
 
 @Component
 public class MessageReceiver {
-	static final Logger LOG = LoggerFactory.getLogger(MessageReceiver.class);
 
-	private static final String ORDER_RESPONSE_QUEUE = "order-response-queue"; // получили подтверждение от продавца
+    static final Logger                           LOG = LoggerFactory.getLogger(MessageReceiver.class);
+    private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order"; // Очередь уже подтвержденных клиентских заказов
 	
 	@Autowired
 	OrderService orderService;
-	
-	
-	@JmsListener(destination = ORDER_RESPONSE_QUEUE)
+
+	@JmsListener(destination = ORDER_CONFIRMED_QUEUE)
 	public void receiveMessage(final Message<InventoryResponse> message) throws JMSException {
 		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		MessageHeaders headers =  message.getHeaders();

@@ -16,13 +16,13 @@ import com.websystique.springmvc.service.OrderInventoryService;
 @Component
 public class MessageReceiver {
 
-	static final Logger LOG = LoggerFactory.getLogger(MessageReceiver.class);
-	private static final String ORDER_QUEUE = "order-queue"; // Очередь заказов
+    static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
+    private static final String ORDER_NEW_QUEUE = "new-order"; // Очередь новых клиентских заказов
 	
 	@Autowired
 	OrderInventoryService orderInventoryService;
 
-	@JmsListener(destination = ORDER_QUEUE)
+	@JmsListener(destination = ORDER_NEW_QUEUE)
 	public void receiveMessage(final Message<Order> message) throws JMSException {
 		LOG.info("----------------------------------------------------");
 		MessageHeaders headers =  message.getHeaders();

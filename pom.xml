@@ -4,8 +4,8 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 							 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<name>(Spring4MVC) Jms ActiveMQ Example</name>
+
+    <name>(Spring4MVC) Jms ActiveMQ Example</name>
 	
 	<groupId>com.websystique.springmvc</groupId>
 	<artifactId>spring4MVCJmsActiveMQ</artifactId>
@@ -19,7 +19,7 @@
 	</properties>
 
     <modules>
-        <module>sendMessage</module>
-        <module>receiveMessageTest</module>
+        <module>clientMessage</module>
+        <module>eShopMessage</module>
     </modules>
 </project>

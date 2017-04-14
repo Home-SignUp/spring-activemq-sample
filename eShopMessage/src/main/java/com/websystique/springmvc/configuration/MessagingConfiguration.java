@@ -10,13 +10,13 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class MessagingConfiguration {
 
-    private static final String   DEFAULT_BROKER_URL = "tcp://localhost:61616"; // JMS-сервер сообщений
-    private static final String ORDER_RESPONSE_QUEUE = "order-response-queue";  // Подтверждение от продавца
+    private static final String            BROKER_URL = "tcp://localhost:61616"; // JMS-сервер сообщений (брокер)
+    private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order";       // Очередь уже подтвержденных клиентских заказов
 
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory(){
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
+		connectionFactory.setBrokerURL(BROKER_URL);
 		connectionFactory.setTrustedPackages(Arrays.asList("com.websystique.springmvc"));
 		return connectionFactory;
 	}
@@ -25,7 +25,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplate(){
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(ORDER_RESPONSE_QUEUE);
+		template.setDefaultDestinationName(ORDER_CONFIRMED_QUEUE);
 		return template;
 	}
 }

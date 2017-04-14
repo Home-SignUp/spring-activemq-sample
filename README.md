@@ -2,6 +2,7 @@
 
 * [websystique.com/springmvc/spring-4-mvc-jms-activemq-annotation-based-example](http://websystique.com/springmvc/spring-4-mvc-jms-activemq-annotation-based-example/)
 * [https://github.com/bsnyder/spring-jms-examples](https://github.com/bsnyder/spring-jms-examples)
+* **Java-7** | **Spring-4** | **Tomcat-7** | **ActiveMQ-5**
 
 ###Messaging Configuration:
 
