@@ -27,19 +27,34 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Override
 	public void sendOrder(Order order) {
-		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 		order.setOrderId(BasicUtil.getUniqueId());
 		order.setStatus(OrderStatus.CREATED);
 		orderRepository.putOrder(order);
-		LOG.info("Application : sending order request {}", order);
+		LOG.debug("Application : sending order request {}", order);
 		messageSender.sendMessage(order);
-		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 
+    /**
+     * На сервере сообщений хранится идентификатор заказа.
+     * ***************************************************
+     * Но сам объект-заказа хранится в (постоянном хранилище) базе данных.
+     * И когда от сервера сообщений приходит подтверждение - по идентификатору заказа ищем этот этот заказ и достаем этот объект...
+     * (но Spring умеет эммитировать только временный репозиторий базы данных...)
+     */
 	@Override
 	public void updateOrder(InventoryResponse response) {
-		
+//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.err.println( response );
+//        System.err.println("-------------------------------------------------------");
+//        System.err.println( response.getOrderId() );
+//        System.err.println("-------------------------------------------------------");
+//        System.err.println( orderRepository.getOrder(response.getOrderId()) );
+//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
 		Order order = orderRepository.getOrder(response.getOrderId());
+
 		if(response.getReturnCode()==200){
 			order.setStatus(OrderStatus.CONFIRMED);
 		}else if(response.getReturnCode()==300){

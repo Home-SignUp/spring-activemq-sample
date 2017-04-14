@@ -4,12 +4,9 @@ import java.io.Serializable;
 
 public class Order implements Serializable {
 
-	private String orderId;
-	
+	private String     orderId;
 	private String productName;
-
-	private int quantity;
-
+	private int       quantity;
 	private OrderStatus status;
 
 	public String getOrderId() {
@@ -72,9 +69,6 @@ public class Order implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", productName=" + productName + ", quantity=" + quantity + ", status="
-				+ status + "]";
+		return "Order [orderId=" + orderId + ", productName=" + productName + ", quantity=" + quantity + ", status=" + status + "]";
 	}
-
-	
 }

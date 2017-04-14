@@ -21,22 +21,18 @@ public class OrderInventoryServiceImpl implements OrderInventoryService {
 	public void processOrder(Order order) {
 		/* Perform any business logic. */
 		InventoryResponse response = prepareResponse(order);
-		LOG.info("Приемная : отправка заказа подтверждения {}", response); // Inventory : sending order confirmation
+		LOG.info("Магазин: ПОЛУЧЕНИЯ КЛИЕНТСКОГО ЗАКАЗА ПОДТВЕРЖДЕНО", response);
 		messageSender.sendMessage(response);
 	}
 
     /**
      * Эммитация получения ответа от клиента:
-     * *************************************
-     * @param order
-     * @return
      */
 	private InventoryResponse prepareResponse(Order order) {
 		InventoryResponse response = new InventoryResponse();
 		response.setOrderId(order.getOrderId());
 		response.setReturnCode(200);
-		response.setComment("Заказ успешно обработан"); // Order Processed successfully
+		response.setComment("Магазин: КЛИЕНТСКИЙ ЗАКАЗ УСПЕШНО ОБРАБОТАН!!!"); //TODO еще сюда можно передать информацию об Offer-объякте
 		return response;
 	}
-	
 }

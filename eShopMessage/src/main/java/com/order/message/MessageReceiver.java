@@ -17,21 +17,21 @@ import com.order.service.OrderInventoryService;
 public class MessageReceiver {
 
     static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
-    private static final String ORDER_NEW_QUEUE = "new-order"; // Очередь новых клиентских заказов
+    private static final String ORDER_NEW_QUEUE = "new-order"; //TODO Очередь новых клиентских заказов
 	
 	@Autowired
 	OrderInventoryService orderInventoryService;
 
 	@JmsListener(destination = ORDER_NEW_QUEUE)
 	public void receiveMessage(final Message<Order> message) throws JMSException {
-		LOG.info("----------------------------------------------------");
+        LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		MessageHeaders headers =  message.getHeaders();
-		LOG.info("Application : headers received : {}", headers);
+		LOG.info("Магазин ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
 		
 		Order order = message.getPayload();
-		LOG.info("Application : product : {}",order);	
+		LOG.info("Магазин ПОЛУЧЕННЫЙ (ORDER): {}", order);
 
 		orderInventoryService.processOrder(order);
-		LOG.info("----------------------------------------------------");
+        LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 }

@@ -17,21 +17,21 @@ import com.order.service.OrderService;
 public class MessageReceiver {
 
     static final Logger                           LOG = LoggerFactory.getLogger(MessageReceiver.class);
-    private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order"; // Очередь уже подтвержденных клиентских заказов
+    private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order"; //TODO Очередь уже подтвержденных клиентских заказов
 	
 	@Autowired
 	OrderService orderService;
 
 	@JmsListener(destination = ORDER_CONFIRMED_QUEUE)
 	public void receiveMessage(final Message<InventoryResponse> message) throws JMSException {
-		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		MessageHeaders headers =  message.getHeaders();
-		LOG.info("Application : headers received : {}", headers);
+		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
 		
 		InventoryResponse response = message.getPayload();
-		LOG.info("Application : response received : {}",response);
+		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'RESPONSE': {}", response);
 		
-		orderService.updateOrder(response);	
-		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		orderService.updateOrder(response);
+        LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 }
