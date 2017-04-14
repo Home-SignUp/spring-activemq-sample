@@ -33,7 +33,5 @@ public class MessageReceiver {
 
 		orderInventoryService.processOrder(order);
 		LOG.info("----------------------------------------------------");
-
 	}
-	
 }

@@ -11,7 +11,9 @@
 
     <body>
         <div class="generic-container">
-            <div class="well lead">Ваш заказ оформлен!</div>
+            <div class="alert alert-success lead">
+                Ваш заказ оформлен!
+            </div>
         </div>
     </body>
 </html>

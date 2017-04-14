@@ -28,5 +28,4 @@ public class MessagingConfiguration {
 		template.setDefaultDestinationName(ORDER_NEW_QUEUE);
 		return template;
 	}
-	
 }
