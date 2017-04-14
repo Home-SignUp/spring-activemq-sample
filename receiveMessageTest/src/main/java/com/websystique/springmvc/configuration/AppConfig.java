@@ -14,11 +14,10 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "com.websystique.springmvc")
 @Import({MessagingConfiguration.class,MessagingListnerConfiguration.class})
 @EnableWebMvc
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class AppConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");

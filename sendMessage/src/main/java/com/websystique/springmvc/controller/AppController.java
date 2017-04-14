@@ -37,7 +37,7 @@ public class AppController {
 			return "createOrder";
 		}
 		orderService.sendOrder(order);
-		model.addAttribute("success", "Order for " + order.getProductName() + " registered.");
+		model.addAttribute("success", "Ваш заказ " + order.getProductName() + " принят");
 		return "success";
 	}
 	
