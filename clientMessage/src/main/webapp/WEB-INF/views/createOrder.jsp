@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Магазин-Клиент</title>
+	<title>Клиент</title>
 	<link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/css/style.css' />" rel="stylesheet"></link>
 </head>
@@ -41,7 +41,8 @@
 		</div>
 		<div class="row">
 			<div class="form-actions floatRight">
-				<input type="submit" value="Разместить заказ" class="btn btn-primary btn-sm"/> или <a href="<c:url value='/home' />">Отменить</a>
+                <input type="submit" value="Разместить заказ" class="btn btn-primary btn-sm"/>
+                <input type="button" value="Отменить" onclick="location.href = '<c:url value="/home" />';" class="btn btn-primary btn-sm"/>
 			</div>
 		</div>
 	</form:form>

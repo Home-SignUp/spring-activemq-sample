@@ -4,12 +4,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Магазин-Продавец</title>
+        <title>Продавец</title>
         <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/css/style.css' />" rel="stylesheet"></link>
     </head>
 
     <body>
-        Ваш заказ выполнен!
+        <div class="generic-container">
+            <div class="well lead">Ваш заказ оформлен!</div>
+        </div>
     </body>
 </html>
