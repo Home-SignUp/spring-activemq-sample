@@ -5,7 +5,7 @@
     <name>(Client) Spring + Jms + ActiveMQ</name>
 
     <parent>
-		<groupId>com.websystique.springmvc</groupId>
+        <groupId>com.order</groupId>
 		<artifactId>spring4MVCJmsActiveMQ</artifactId>
 		<version>1.0.0</version>
     </parent>
