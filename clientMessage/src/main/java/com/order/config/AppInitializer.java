@@ -1,4 +1,4 @@
-package com.order.configuration;
+package com.order.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

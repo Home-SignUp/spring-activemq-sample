@@ -1,4 +1,4 @@
-package com.order.configuration;
+package com.order.config;
 
 import javax.jms.ConnectionFactory;
 

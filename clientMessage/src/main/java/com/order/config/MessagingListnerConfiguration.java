@@ -1,4 +1,4 @@
-package com.order.configuration;
+package com.order.config;
 
 import javax.jms.ConnectionFactory;
 
@@ -22,5 +22,4 @@ public class MessagingListnerConfiguration {
         factory.setConcurrency("1-1");
         return factory;
     }
-
 }

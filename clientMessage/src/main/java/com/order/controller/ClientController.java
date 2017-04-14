@@ -13,7 +13,7 @@ import com.order.model.Order;
 import com.order.service.OrderService;
 
 @Controller
-public class AppController {
+public class ClientController {
 
 	@Autowired
 	OrderService orderService;

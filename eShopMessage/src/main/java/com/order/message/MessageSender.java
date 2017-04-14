@@ -1,4 +1,4 @@
-package com.order.messaging;
+package com.order.message;
 
 import javax.jms.JMSException;
 import javax.jms.Message;

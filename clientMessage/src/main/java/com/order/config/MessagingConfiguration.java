@@ -1,4 +1,4 @@
-package com.order.configuration;
+package com.order.config;
 
 import java.util.Arrays;
 
@@ -10,8 +10,8 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class MessagingConfiguration {
 
-    private static final String            BROKER_URL = "tcp://localhost:61616"; // JMS-сервер сообщений (брокер)
-    private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order";       // Очередь уже подтвержденных клиентских заказов
+    private static final String      BROKER_URL = "tcp://localhost:61616"; // JMS-сервер сообщений (брокер)
+    private static final String ORDER_NEW_QUEUE = "new-order";             // Очередь новых клиентских заказов
 
 	@Bean
 	public ActiveMQConnectionFactory connectionFactory(){
@@ -25,7 +25,7 @@ public class MessagingConfiguration {
 	public JmsTemplate jmsTemplate(){
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
-		template.setDefaultDestinationName(ORDER_CONFIRMED_QUEUE);
+		template.setDefaultDestinationName(ORDER_NEW_QUEUE);
 		return template;
 	}
 }

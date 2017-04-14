@@ -2,12 +2,13 @@ package com.order.service;
 
 import java.util.Map;
 
+import com.order.dao.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.order.messaging.MessageSender;
+import com.order.message.MessageSender;
 import com.order.model.InventoryResponse;
 import com.order.model.Order;
 import com.order.model.OrderStatus;
@@ -22,7 +23,7 @@ public class OrderServiceImpl implements OrderService{
 	MessageSender messageSender;
 	
 	@Autowired
-	OrderRepository orderRepository;
+    OrderRepository orderRepository;
 	
 	@Override
 	public void sendOrder(Order order) {

@@ -1,4 +1,4 @@
-package com.order.configuration;
+package com.order.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,22 +14,17 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "com.order")
 @Import({MessagingConfiguration.class,MessagingListnerConfiguration.class})
 @EnableWebMvc
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class AppConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
-	
-	/*
-     * Configure ResourceHandlers to serve static resources like CSS/ Javascript etc...
-     *
-     */
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/");
