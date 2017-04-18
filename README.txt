@@ -8,8 +8,15 @@
 	(Интегрировать Swagger в Spring+Jersey REST proj) http://javatalks.ru/topics/41148
 	                                                  https://habrahabr.ru/post/252237/
 >>                                                    http://gup.com.ua:8184/swagger-ui.html
->>> (Принципы функционального программирования на Scala) https://www.coursera.org/learn/progfun1
+>>> (Интегрировать Swagger в Spring+Jersey REST proj) http://javatalks.ru/topics/41148 >> https://github.com/swagger-api/swagger-core
+>>>                                                   https://jazzteam.org/ru/technical-articles/setup-and-setting-swagger/
 
+                             (MongoDB ElasticSearch)
+>>> (Переходим от MongoDB Full Text к ElasticSearch) https://habrahabr.ru/company/likeastore/blog/223109/
+                                                     http://blog.quarkslab.com/mongodb-vs-elasticsearch-the-quest-of-the-holy-performances.html
+                                      (mongo-lucene) https://github.com/rstiller/mongo-lucene
+
+>>> (Принципы функционального программирования на Scala) https://www.coursera.org/learn/progfun1
 
 
     (Point to Point Messaging Program) https://www.novell.com/documentation/extend5/Docs/help/MP/jms/tutorial/pointToPoint-1.htm
