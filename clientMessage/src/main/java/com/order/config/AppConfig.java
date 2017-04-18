@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "com.order")
 @Import({MessagingConfiguration.class,MessagingListnerConfiguration.class})
 @EnableWebMvc
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class AppConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
