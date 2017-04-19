@@ -20,8 +20,8 @@ public class MessagingConfiguration {
 		connectionFactory.setTrustedPackages(Arrays.asList("com.order"));
 		return connectionFactory;
 	}
-	
-	@Bean 
+
+	@Bean
 	public JmsTemplate jmsTemplate(){
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());

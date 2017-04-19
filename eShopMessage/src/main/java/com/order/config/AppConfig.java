@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Import({MessagingConfiguration.class,MessagingListnerConfiguration.class})
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
-	
+
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -29,5 +29,5 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/");
     }
-	
+
 }

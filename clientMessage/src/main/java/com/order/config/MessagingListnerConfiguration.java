@@ -14,7 +14,7 @@ public class MessagingListnerConfiguration {
 
 	@Autowired
 	ConnectionFactory connectionFactory;
-	
+
 	@Bean
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
