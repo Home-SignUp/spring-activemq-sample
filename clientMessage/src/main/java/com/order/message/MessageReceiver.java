@@ -22,6 +22,11 @@ public class MessageReceiver {
 	@Autowired
 	OrderService orderService;
 
+    /*
+     * 'receive' == он же метод 'onMessage()'...
+     * *****************************************
+     * 'onMessage()' - это дефолтный метод он слушает-получает (обрабатывает) все сообщения которые адресуемые этому клиенту
+     */
 	@JmsListener(destination = ORDER_CONFIRMED_QUEUE)
 	public void receiveMessage(final Message<InventoryResponse> message) throws JMSException {
         LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");

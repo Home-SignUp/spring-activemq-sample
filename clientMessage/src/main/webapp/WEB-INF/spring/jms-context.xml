@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.4.2.xsd
+           http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-2.5.xsd">
+
+    <!-- JMS -->
+    <bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616" />  <!--  JMS-сервер сообщений (брокер) -->
+        <property name="trustedPackages">
+            <list>
+                <value>"com.order"</value>                 <!-- com.order -->
+            </list>
+        </property>
+        <property name="trustAllPackages" value="true" />  <!-- Failed to build body from content. Serializable class not available to broker: http://codeomitted.com/failed-to-build-body-from-content-serializable-class-not-available-to-broker/ -->
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="connectionFactory" />
+        <property name="defaultDestinationName" value="new-order" />  <!-- Очередь новых клиентских заказов -->
+    </bean>
+
+    <!-- JMS Listener Contatiner                                                                                                         -->
+    <!-- Контейнер (фабрика) - она подключает всех-всех слушателей, кому адресуются сообщения...                                         -->
+    <!--( методы всех слушателей, кому адресуются сообщения - аннотируются @JmsListener = автоматически, НЕявно, будут включены сюда... )-->
+    <bean id="jmsListenerContainerFactory" class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="concurrency" value="1-1" />
+    </bean>
+
+</beans>
