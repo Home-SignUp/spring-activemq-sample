@@ -9,14 +9,28 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.order.dao.UserDao;
+import com.order.model.User;
 import com.order.model.Order;
 import com.order.service.OrderService;
+import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 @Controller
 public class ClientController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
+
 	@Autowired
 	OrderService orderService;
+
+    @Autowired
+    UserDao userDao;
 	
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String prepareProduct(ModelMap model) {
@@ -46,4 +60,15 @@ public class ClientController {
 		model.addAttribute("orders", orderService.getAllOrders());
 		return "orderStatus";
 	}
+
+    @RequestMapping(value = "/db", method = RequestMethod.GET)
+    public String welcome(Model model) {
+        logger.debug("order");
+
+        List<User> users = userDao.findAll(); //User user = userDao.findByName("order");
+        System.out.println(users);
+        model.addAttribute("user", users);
+
+        return "orderData";
+    }
 }
