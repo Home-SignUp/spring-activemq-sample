@@ -20,6 +20,7 @@
 
     <modules>
         <module>core</module>
+        <module>database</module>
         <module>clientMessage</module>
         <module>eShopMessage</module>
     </modules>
