@@ -1,4 +1,4 @@
-package com.mkyong.controller;
+package com.order.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mkyong.dao.UserDao;
-import com.mkyong.model.User;
+import com.order.dao.UserDao;
+import com.order.model.User;
 
 @Controller
 public class Welcome {

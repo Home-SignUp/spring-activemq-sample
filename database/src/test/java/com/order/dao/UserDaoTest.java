@@ -1,4 +1,4 @@
-package com.mkyong.dao;
+package com.order.dao;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -9,7 +9,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import com.mkyong.model.User;
+import com.order.model.User;
 
 public class UserDaoTest {
 
@@ -32,12 +32,12 @@ public class UserDaoTest {
     	UserDaoImpl userDao = new UserDaoImpl();
     	userDao.setNamedParameterJdbcTemplate(template);
     	
-    	User user = userDao.findByName("mkyong");
+    	User user = userDao.findByName("order");
   
     	Assert.assertNotNull(user);
     	Assert.assertEquals(1, user.getId().intValue());
-    	Assert.assertEquals("mkyong", user.getName());
-    	Assert.assertEquals("mkyong@gmail.com", user.getEmail());
+    	Assert.assertEquals("order", user.getName());
+    	Assert.assertEquals("order@gmail.com", user.getEmail());
 
     }
 

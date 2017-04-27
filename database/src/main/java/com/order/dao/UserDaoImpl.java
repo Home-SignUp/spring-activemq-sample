@@ -1,4 +1,4 @@
-package com.mkyong.dao;
+package com.order.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mkyong.model.User;
+import com.order.model.User;
 
 
 /**
