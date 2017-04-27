@@ -1,7 +1,7 @@
 package com.order.controller;
 
-import java.util.List;
-
+import com.order.dao.UserDao;
+import com.order.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.order.dao.UserDao;
-import com.order.model.User;
+import java.util.List;
 
 @Controller
-public class Database {
+public class DatabaseController {
 
-	private static final Logger logger = LoggerFactory.getLogger(Database.class);
+	private static final Logger logger = LoggerFactory.getLogger(DatabaseController.class);
 
 	@Autowired
 	UserDao userDao;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/db", method = RequestMethod.GET)
 	public String welcome(Model model) {
 		logger.debug("order");
 
