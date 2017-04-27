@@ -14,21 +14,21 @@ import com.order.dao.UserDao;
 import com.order.model.User;
 
 @Controller
-public class Welcome {
+public class Database {
 
-	private static final Logger logger = LoggerFactory.getLogger(Welcome.class);
+	private static final Logger logger = LoggerFactory.getLogger(Database.class);
 
 	@Autowired
 	UserDao userDao;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(Model model) {
-		logger.debug("mkyong");
+		logger.debug("order");
 
-		List<User> users = userDao.findAll(); //User user = userDao.findByName("mkyong");
+		List<User> users = userDao.findAll(); //User user = userDao.findByName("order");
 		System.out.println(users);
 		model.addAttribute("user", users);
 
-		return "index";
+		return "database";
 	}
 }
