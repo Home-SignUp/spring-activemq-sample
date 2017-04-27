@@ -101,8 +101,7 @@ Template for a Spring 4 MVC + Embedded Database examples, using HSQLDB, H2 and D
 * H2 1.4.187
 * Derby 10.11.1.1
 
-* `Access` [http://localhost:8086/db](http://localhost:8086/db)
-* `Access` [http://localhost:8087/db](http://localhost:8087/db)
+* `Access` [http://localhost:8086/db](http://localhost:8086/db) | [http://localhost:8087/db](http://localhost:8087/db)
 
 ###3. Project Demo
 Please refer to this article [Spring Embedded Database  examples](http://www.mkyong.com/spring/spring-embedded-database-examples/)
