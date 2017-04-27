@@ -89,3 +89,19 @@ ActiveMQ.Advisory.Queue                            | 0                         |
 * `Introduction`: [http://activemq.apache.org/getting-started.html#GettingStarted-WindowsBinaryInstallation](http://activemq.apache.org/getting-started.html#GettingStarted-WindowsBinaryInstallation)
 
 * `apache-activemq-5.11.1-bin.zip`: [http://apache.volia.net/activemq/5.11.1/apache-activemq-5.11.1-bin.zip](http://apache.volia.net/activemq/5.11.1/apache-activemq-5.11.1-bin.zip)
+
+
+
+Spring Embedded Database
+===============================
+Template for a Spring 4 MVC + Embedded Database examples, using HSQLDB, H2 and Derby.
+
+###1. Technologies used
+* HSQLDB 2.3.2
+* H2 1.4.187
+* Derby 10.11.1.1
+
+Access ```http://localhost:8088/db/```
+
+###3. Project Demo
+Please refer to this article [Spring Embedded Database  examples](http://www.mkyong.com/spring/spring-embedded-database-examples/)
