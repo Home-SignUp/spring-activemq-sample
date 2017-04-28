@@ -25,14 +25,18 @@
     <!-- http://www.javavillage.in/hsql-db-sample-example.php                                                                      -->
     <!-- https://www.mkyong.com/spring/spring-embedded-database-examples                                                           -->
     <!-- http://stackoverflow.com/questions/34133387/org-hsqldb-hsqlexception-connection-exception-connection-failure-java-io-eofe -->
-    <!-- http://stackoverflow.com/questions/24822413/embedded-hsqldb-persist-data-to-a-file -->
-    <!-- https://trac.i2p2.de/ticket/1127                                                   -->
+    <!-- http://whileonefork.blogspot.com/2012/11/unit-testing-with-in-memory-database.html                                        -->
+    <!-- http://stackoverflow.com/questions/24822413/embedded-hsqldb-persist-data-to-a-file        -->
+    <!-- https://trac.i2p2.de/ticket/1127                                                          -->
+    <!-- http://stackoverflow.com/questions/26477218/database-lock-acquisition-failure-with-hsqldb -->
     <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" depends-on="dataSource">
         <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
         <property name="url" value="jdbc:hsqldb:file:D:\server\HSQLDB\gup" />
         <property name="username" value="SA" />
         <property name="password" value="" />
-        <property name="initialSize" value = "100" />    <!-- ??? -->
+        <property name="initialSize" value="5"/>
+        <property name="maxIdle" value="-1"/>
+        <property name="minIdle" value="5"/>
     </bean>
 
 </beans>
