@@ -27,14 +27,14 @@ public class MessageReceiver {
      * *****************************************
      * 'onMessage()' - это дефолтный метод он слушает-получает (обрабатывает) все сообщения которые адресуемые этому клиенту
      */
-	@JmsListener(destination = ORDER_CONFIRMED_QUEUE)
+	@JmsListener(destination = ORDER_CONFIRMED_QUEUE) //TODO: каждый юзер является уникальным, поэтому под каждого юзера можно создавать уникальную очередю (по ID)
 	public void receiveMessage(final Message<InventoryResponse> message) throws JMSException {
         LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		MessageHeaders headers =  message.getHeaders();
 		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
 		
 		InventoryResponse response = message.getPayload();
-		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'RESPONSE': {}", response);
+		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
 		
 		orderService.updateOrder(response);
         LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");

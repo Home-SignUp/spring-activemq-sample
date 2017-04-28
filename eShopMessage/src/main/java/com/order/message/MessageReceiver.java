@@ -34,7 +34,7 @@ public class MessageReceiver {
 		LOG.info("Магазин ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
 		
 		Order order = message.getPayload();
-		LOG.info("Магазин ПОЛУЧЕННЫЙ (ORDER): {}", order);
+		LOG.info("Магазин ПОЛУЧЕННЫЙ (ORDER): {}", order); //TODO: по ID-юзера вытаскивать сообщения которые ему адрессуются
 
 		orderInventoryService.processOrder(order);
         LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
