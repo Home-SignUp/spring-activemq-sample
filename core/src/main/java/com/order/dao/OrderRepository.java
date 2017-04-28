@@ -1,14 +1,18 @@
 package com.order.dao;
 
-import java.util.Map;
-
 import com.order.model.Order;
+
+import java.util.List;
+import java.util.Map;
 
 public interface OrderRepository {
 
-	public void putOrder(Order order);
-	
-	public Order getOrder(String orderId);
-	
-	public Map<String, Order> getAllOrders();
+    void putOrder(Order order);
+
+    void updateOrder(Order order);
+
+    Order getOrder(String orderId);
+
+    Map<String, Order> getAllOrders();
+
 }

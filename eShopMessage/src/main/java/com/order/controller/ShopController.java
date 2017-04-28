@@ -26,14 +26,14 @@ public class ShopController {
         return "confirmOrder";
     }
 
-	@RequestMapping(value = "/db", method = RequestMethod.GET)
-	public String welcome(Model model) {
-		logger.debug("order");
+    @RequestMapping(value = "/api-2", method = RequestMethod.GET)
+    public String viewUsers(Model model) {
+        logger.debug("user");
 
-		List<User> users = userDao.findAll(); //User user = userDao.findByName("order");
-		System.out.println(users);
-		model.addAttribute("user", users);
+        List<User> users = userDao.findAll(); //User user = userDao.findByName("order");
+        System.err.println(users);
+        model.addAttribute("user", users);
 
-		return "orderData";
-	}
+        return "userData";
+    }
 }

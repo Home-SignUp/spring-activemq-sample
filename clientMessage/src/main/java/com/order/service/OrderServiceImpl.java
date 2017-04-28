@@ -55,16 +55,17 @@ public class OrderServiceImpl implements OrderService{
 
 		Order order = orderRepository.getOrder(response.getOrderId());
 
-		if(response.getReturnCode()==200){
+		if(response.getReturnCode()==200) {
 			order.setStatus(OrderStatus.CONFIRMED);
-		}else if(response.getReturnCode()==300){
+		} else if(response.getReturnCode()==300) {
 			order.setStatus(OrderStatus.FAILED);
-		}else{
+		} else {
 			order.setStatus(OrderStatus.PENDING);
 		}
-		orderRepository.putOrder(order);
+        orderRepository.updateOrder(order);
 	}
-	
+
+    @Override
 	public Map<String, Order> getAllOrders(){
 		return orderRepository.getAllOrders();
 	}

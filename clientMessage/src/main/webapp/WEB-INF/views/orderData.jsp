@@ -12,18 +12,24 @@
 <body>
     <div class="generic-container">
         <div class="well lead">Информация из базы</div>
-        <div class="row">
-            <table>
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${orders}" var="entry">
                 <tr>
-                    <th>msg:</th>
-                    <td>${msg}</td>
+                    <td>${entry.key}</td>
+                    <td>${entry.value.productName}</td>
+                    <td>${entry.value.status}</td>
                 </tr>
-                <tr>
-                    <th>user:</th>
-                    <td>${user}</td>
-                </tr>
-            </table>
-        </div>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

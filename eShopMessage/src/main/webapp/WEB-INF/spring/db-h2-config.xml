@@ -7,8 +7,8 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
 	<jdbc:embedded-database id="dataSource" type="H2">
-		<jdbc:script location="classpath:db/create-db.sql" />
-		<jdbc:script location="classpath:db/insert-data.sql" />
+        <jdbc:script location="classpath:db/schema.sql" />
+        <jdbc:script location="classpath:db/data.sql" />
 	</jdbc:embedded-database>
  
 </beans>

@@ -2,6 +2,7 @@ package com.order.controller;
 
 import javax.validation.Valid;
 
+import com.order.dao.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 public class ClientController {
@@ -31,7 +34,7 @@ public class ClientController {
 
     @Autowired
     UserDao userDao;
-	
+
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String prepareProduct(ModelMap model) {
 		return "index";
@@ -45,8 +48,7 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = { "/newOrder" }, method = RequestMethod.POST)
-	public String sendOrder(@Valid Order order, BindingResult result,
-			ModelMap model) {
+	public String sendOrder(@Valid Order order, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "createOrder";
 		}
@@ -61,14 +63,23 @@ public class ClientController {
 		return "orderStatus";
 	}
 
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
+    @RequestMapping(value = "/api-1", method = RequestMethod.GET)
     public String welcome(Model model) {
         logger.debug("order");
 
-        List<User> users = userDao.findAll(); //User user = userDao.findByName("order");
-        System.out.println(users);
-        model.addAttribute("user", users);
+        model.addAttribute("orders", orderService.getAllOrders());
 
         return "orderData";
+    }
+
+    @RequestMapping(value = "/api-2", method = RequestMethod.GET)
+    public String viewUsers(Model model) {
+        logger.debug("user");
+
+        List<User> users = userDao.findAll(); //User user = userDao.findByName("order");
+        System.err.println(users);
+        model.addAttribute("user", users);
+
+        return "userData";
     }
 }

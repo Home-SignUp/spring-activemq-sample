@@ -105,3 +105,26 @@ Template for a Spring 4 MVC + Embedded Database examples, using HSQLDB, H2 and D
 
 ###3. Project Demo
 Please refer to this article [Spring Embedded Database  examples](http://www.mkyong.com/spring/spring-embedded-database-examples/)
+
+
+* ```http://www.javavillage.in/hsql-db-sample-example.php```
+* ```> d:```
+* ```> cd D:\server\hsqldb\lib```
+* ```> java -cp hsqldb.jar org.hsqldb.util.DatabaseManagerSwing```
+* ```jdbc:hsqldb:file:D:\IdeaProjects\GUP\spring-activemq-sample\HSQLDB\DB```
+* ```jdbc:hsqldb:file:D:\server\HSQLDB\gup```
+
+* [https://www.mkyong.com/spring-batch/spring-batch-metadata-tables-are-not-created-automatically/](https://www.mkyong.com/spring-batch/spring-batch-metadata-tables-are-not-created-automatically/)
+* [https://examples.javacodegeeks.com/enterprise-java/spring/spring-batch-jobrepository-example/](https://examples.javacodegeeks.com/enterprise-java/spring/spring-batch-jobrepository-example/)
+* [http://javastudy.ru/spring-mvc/spring-mvc-jdbc/](http://javastudy.ru/spring-mvc/spring-mvc-jdbc/)
+* [http://www.h2database.com/html/tutorial.html](http://www.h2database.com/html/tutorial.html)
+* [http://stackoverflow.com/questions/24822413/embedded-hsqldb-persist-data-to-a-file](http://stackoverflow.com/questions/24822413/embedded-hsqldb-persist-data-to-a-file)
+* [http://www.dineshonjava.com/2012/12/using-namedparameterjdbctemplate-in.html](http://www.dineshonjava.com/2012/12/using-namedparameterjdbctemplate-in.html)
+* [https://dzone.com/tutorials/java/spring/spring-named-parameter-jdbc-template.html](https://dzone.com/tutorials/java/spring/spring-named-parameter-jdbc-template.html)
+* [http://netjs.blogspot.com/2016/11/insert-update-using-namedparameterjdbctemplate-spring.html](http://netjs.blogspot.com/2016/11/insert-update-using-namedparameterjdbctemplate-spring.html)
+
+* [http://stackoverflow.com/questions/7869943/cant-create-schema-on-initialize-database-if-hsqlbd-is-on-server-mode](http://stackoverflow.com/questions/7869943/cant-create-schema-on-initialize-database-if-hsqlbd-is-on-server-mode)
+* [http://stackoverflow.com/questions/4293787/jdbc-create-table](http://stackoverflow.com/questions/4293787/jdbc-create-table)
+* [http://stackoverflow.com/questions/37971721/jdbc-initialize-database-with-java-config](http://stackoverflow.com/questions/37971721/jdbc-initialize-database-with-java-config)
+* [http://techqa.info/programming/question/18617638/hsql:-creating-index-if-not-existing](http://techqa.info/programming/question/18617638/hsql:-creating-index-if-not-existing)
+* [http://techqa.info/programming/question/37971721/jdbc-initialize-database-with-java-config](http://techqa.info/programming/question/37971721/jdbc-initialize-database-with-java-config)

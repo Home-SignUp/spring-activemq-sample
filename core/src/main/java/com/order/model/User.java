@@ -2,9 +2,9 @@ package com.order.model;
 
 public class User {
 
-	Integer id;
-	String name;
-	String email;
+	private Integer   id;
+    private String  name;
+    private String email;
 
 	public Integer getId() {
 		return id;
@@ -34,5 +34,4 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
 	}
-
 }
