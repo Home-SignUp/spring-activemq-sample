@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void sendUser(User user) {
         LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
-		user.setOrderId(BasicUtil.getUniqueId());
+		user.setUserId(BasicUtil.getUniqueId());
 		user.setStatus(NotificationStatus.CREATED);
 		userRepository.putUser(user);
 		LOG.debug("Application : sending order request {}", user);
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 //        System.err.println( orderRepository.getOrder(response.getOrderId()) );
 //        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-		User user = userRepository.getUser(response.getOrderId());
+		User user = userRepository.getUser(response.getUserId());
 
 		if(response.getReturnCode()==200) {
 			user.setStatus(NotificationStatus.CONFIRMED);

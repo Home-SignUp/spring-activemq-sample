@@ -10,7 +10,7 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class MessagingConfiguration {
 
-    private static final String USER_SEND_QUEUE = "send-user"; //TODO: Очередь уже подтвержденных клиентских заказов (ID-клиента отправителя... confirmed-order)
+    private static final String USER_SEND_QUEUE = "send-user"; //TODO: Очередь уже подтвержденных клиентских заказов (ID-клиента отправителя)
 
     @Autowired
     ConnectionFactory connectionFactory;

@@ -30,9 +30,9 @@ public class UserInventoryServiceImpl implements UserInventoryService {
      */
 	private InventoryResponse prepareResponse(User user) {
 		InventoryResponse response = new InventoryResponse();
-		response.setOrderId(user.getOrderId());
+		response.setUserId(user.getUserId());
 		response.setReturnCode(200);
-		response.setComment("Магазин: КЛИЕНТСКИЙ ЗАКАЗ УСПЕШНО ОБРАБОТАН!!!"); //TODO еще сюда можно передать информацию об Offer-объякте
+		response.setComment("Магазин: КЛИЕНТСКИЙ ЗАКАЗ УСПЕШНО ОБРАБОТАН!!!"); //TODO еще сюда можно передать информацию об пользовательском уведомлении
 		return response;
 	}
 }

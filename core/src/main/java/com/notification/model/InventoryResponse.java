@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class InventoryResponse implements Serializable {
 
-	private String orderId;
+	private String userId;
 	private int returnCode;
 	private String comment;
 
 
-	public String getOrderId() {
-		return orderId;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getReturnCode() {
@@ -38,7 +38,7 @@ public class InventoryResponse implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -51,16 +51,16 @@ public class InventoryResponse implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		InventoryResponse other = (InventoryResponse) obj;
-		if (orderId == null) {
-			if (other.orderId != null)
+		if (userId == null) {
+			if (other.userId != null)
 				return false;
-		} else if (!orderId.equals(other.orderId))
+		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "InventoryResponse [orderId=" + orderId + ", returnCode=" + returnCode + ", comment=" + comment + "]";
+		return "InventoryResponse [userId=" + userId + ", returnCode=" + returnCode + ", comment=" + comment + "]";
 	}
 }
