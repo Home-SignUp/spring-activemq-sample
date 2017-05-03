@@ -6,20 +6,20 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Клиент</title>
+	<title>Отправитель</title>
 	<link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/css/style.css' />" rel="stylesheet"></link>
 </head>
 
 <body>
  	<div class="generic-container">
-		<div class="well lead">Статус заказа</div>
+		<div class="well lead">Состояние уведомлений</div>
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Имя</th>
-					<th>Статус</th>
+					<th>ID-Получателя</th>
+					<th>Уведомление</th>
+					<th>Состояние</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,10 +34,10 @@
 		</table>
         <div class="row">
             <div class="form-actions floatRight">
-                <input type="button" value="Оформить заказ" onclick="location.href = '<c:url value="/newOrder" />';" class="btn btn-primary btn-sm"/>
+                <input type="button" value="Написать уведомление" onclick="location.href = '<c:url value="/newOrder" />';" class="btn btn-primary btn-sm"/>
             </div>
             <div class="form-actions floatRight">
-                <input type="button" value="Проверить статус" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
+                <input type="button" value="Проверить состояние" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
             </div>
         </div>
 	</div>

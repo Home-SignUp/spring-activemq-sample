@@ -17,7 +17,7 @@ import com.notification.service.UserService;
 public class MessageReceiver {
 
     static final Logger                           LOG = LoggerFactory.getLogger(MessageReceiver.class);
-    private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order"; //TODO Очередь уже подтвержденных клиентских заказов
+    private static final String ORDER_CONFIRMED_QUEUE = "send-user"; //TODO Очередь уже подтвержденных клиентских заказов (confirmed-order)
 	
 	@Autowired
     UserService userService;
@@ -27,7 +27,7 @@ public class MessageReceiver {
      * *****************************************
      * 'onMessage()' - это дефолтный метод он слушает-получает (обрабатывает) все сообщения которые адресуемые этому клиенту
      */
-	@JmsListener(destination = ORDER_CONFIRMED_QUEUE) //TODO: каждый юзер является уникальным, поэтому под каждого юзера можно создавать уникальную очередю (по ID)
+	@JmsListener(destination = ORDER_CONFIRMED_QUEUE) //TODO: каждый юзер является уникальным, поэтому под каждого юзера можно создавать уникальную очередь (по ID)
 	public void receiveMessage(final Message<InventoryResponse> message) throws JMSException {
         LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		MessageHeaders headers =  message.getHeaders();

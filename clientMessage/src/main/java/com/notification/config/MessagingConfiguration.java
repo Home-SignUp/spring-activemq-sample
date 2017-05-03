@@ -10,7 +10,7 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class MessagingConfiguration {
 
-    private static final String ORDER_NEW_QUEUE = "new-order"; //TODO: Очередь новых клиентских заказов (ID-клиента получателя)
+    private static final String ORDER_NEW_QUEUE = "receive-user"; //TODO: Очередь новых клиентских заказов (ID-клиента получателя... new-order)
 
     @Autowired
     ConnectionFactory connectionFactory;

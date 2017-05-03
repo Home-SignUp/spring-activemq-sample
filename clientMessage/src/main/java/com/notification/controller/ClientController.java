@@ -42,7 +42,7 @@ public class ClientController {
 			return "createOrder";
 		}
 		userService.sendUser(user);
-		model.addAttribute("success", "Ваш заказ " + user.getProductName() + " отправлен");
+		model.addAttribute("success", "Ваше уведомление " + user.getProductName() + " отправлено");
 		return "success";
 	}
 	

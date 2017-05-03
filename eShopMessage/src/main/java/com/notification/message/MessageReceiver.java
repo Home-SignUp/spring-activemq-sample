@@ -17,7 +17,7 @@ import com.notification.service.UserInventoryService;
 public class MessageReceiver {
 
     static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
-    private static final String ORDER_NEW_QUEUE = "new-order"; //TODO Очередь новых клиентских заказов
+    private static final String ORDER_NEW_QUEUE = "receive-user"; //TODO Очередь новых клиентских заказов (new-order)
 	
 	@Autowired
     UserInventoryService userInventoryService;
