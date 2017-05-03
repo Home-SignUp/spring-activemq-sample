@@ -25,6 +25,10 @@
     <!-- http://stackoverflow.com/questions/11144369/jdbcembedded-database-in-context-xml-does-not-work-want-to-to-start-an-sql-s  -->
     <!-- http://www.javavillage.in/hsql-db-sample-example.php                                                                      -->
     <!-- https://www.mkyong.com/spring/spring-embedded-database-examples                                                           -->
+    <!--  > d:                                                        -->
+    <!--  > cd D:\server\hsqldb\lib>                                  -->
+    <!--  > java -cp hsqldb.jar org.hsqldb.util.DatabaseManagerSwing  -->
+    <!--  jdbc:hsqldb:file:D:\server\HSQLDB\gup                       -->
     <!-- http://stackoverflow.com/questions/34133387/org-hsqldb-hsqlexception-connection-exception-connection-failure-java-io-eofe -->
     <!-- http://whileonefork.blogspot.com/2012/11/unit-testing-with-in-memory-database.html                                        -->
     <!-- http://stackoverflow.com/questions/24822413/embedded-hsqldb-persist-data-to-a-file        -->
