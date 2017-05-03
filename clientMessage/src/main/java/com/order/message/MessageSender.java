@@ -18,8 +18,8 @@ public class MessageSender {
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	public void sendMessage(final Order order) {
-
+	public void sendMessage(final Order order) { //TODO: 1 - (Order) User
+                                                 //TODO: 2 - передавать нужно не <User>, а специальную информацию об сообщения (в качестве юзера создавать его ID-канала)
         /**
          * Доставка сообщений выполняется в рамках сессии.
          * **************************************************************

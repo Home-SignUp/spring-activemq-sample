@@ -121,6 +121,20 @@
             <version>${derby.version}</version>
         </dependency>
 
+        <!-- MySQL database driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- PostgreSQL database driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
         <!--  connection polls -->
         <dependency>
             <groupId>org.apache.commons</groupId>

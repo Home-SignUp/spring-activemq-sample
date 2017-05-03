@@ -18,8 +18,8 @@ public class MessageSender {
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	public void sendMessage(final InventoryResponse inventoryResponse) {
-
+	public void sendMessage(final InventoryResponse inventoryResponse) { //TODO: 1 - InventoryResponse
+                                                                         //TODO: 2 - передавать нужно специальную информацию об сообщения (в качестве юзера создавать его ID-канала)
 		jmsTemplate.send(new MessageCreator(){
 				@Override
 				public Message createMessage(Session session) throws JMSException{
