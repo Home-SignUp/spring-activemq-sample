@@ -120,14 +120,12 @@
             <artifactId>derby</artifactId>
             <version>${derby.version}</version>
         </dependency>
-
         <!-- MySQL database driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
-
         <!-- PostgreSQL database driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
