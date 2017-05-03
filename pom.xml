@@ -7,7 +7,7 @@
 
     <name>(Spring4MVC) Jms ActiveMQ Example</name>
 	
-	<groupId>com.order</groupId>
+	<groupId>com.notification</groupId>
 	<artifactId>spring4MVCJmsActiveMQ</artifactId>
 	<version>1.0.0</version>
 

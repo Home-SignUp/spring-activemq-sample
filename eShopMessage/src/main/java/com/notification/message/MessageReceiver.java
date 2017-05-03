@@ -16,8 +16,8 @@ import com.notification.service.UserInventoryService;
 @Component
 public class MessageReceiver {
 
-    static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
-    private static final String ORDER_NEW_QUEUE = "receive-user"; //TODO Очередь новых клиентских заказов (new-order)
+    static final Logger                        LOG = LoggerFactory.getLogger(MessageReceiver.class);
+    private static final String USER_RECEIVE_QUEUE = "receive-user"; //TODO Очередь новых клиентских заказов
 	
 	@Autowired
     UserInventoryService userInventoryService;
@@ -27,7 +27,7 @@ public class MessageReceiver {
      * *****************************************
      * 'onMessage()' - это дефолтный метод он слушает-получает (обрабатывает) все сообщения которые адресуемые этому клиенту
      */
-	@JmsListener(destination = ORDER_NEW_QUEUE)
+	@JmsListener(destination = USER_RECEIVE_QUEUE)
 	public void receiveMessage(final Message<User> message) throws JMSException {
         LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		MessageHeaders headers =  message.getHeaders();

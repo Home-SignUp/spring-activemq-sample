@@ -16,7 +16,7 @@
         <property name="brokerURL" value="tcp://localhost:61616" />  <!--  JMS-сервер сообщений (брокер) -->
         <property name="trustedPackages">
             <list>
-                <value>"com.order"</value>                 <!-- com.order -->
+                <value>"com.notification"</value>                    <!-- com.notification -->
             </list>
         </property>
         <property name="trustAllPackages" value="true" />  <!-- Failed to build body from content. Serializable class not available to broker: http://codeomitted.com/failed-to-build-body-from-content-serializable-class-not-available-to-broker/ -->

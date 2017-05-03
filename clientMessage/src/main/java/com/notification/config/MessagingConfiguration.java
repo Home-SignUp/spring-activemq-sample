@@ -10,7 +10,7 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class MessagingConfiguration {
 
-    private static final String ORDER_NEW_QUEUE = "receive-user"; //TODO: Очередь новых клиентских заказов (ID-клиента получателя... new-order)
+    private static final String USER_RECEIVE_QUEUE = "receive-user"; //TODO: Очередь новых клиентских заказов (ID-клиента получателя... new-order)
 
     @Autowired
     ConnectionFactory connectionFactory;
@@ -19,7 +19,7 @@ public class MessagingConfiguration {
     public JmsTemplate jmsTemplate(){
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactory);
-        template.setDefaultDestinationName(ORDER_NEW_QUEUE);
+        template.setDefaultDestinationName(USER_RECEIVE_QUEUE);
         return template;
     }
 }

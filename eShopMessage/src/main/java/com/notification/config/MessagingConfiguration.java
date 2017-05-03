@@ -10,7 +10,7 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class MessagingConfiguration {
 
-    private static final String ORDER_CONFIRMED_QUEUE = "send-user"; //TODO: Очередь уже подтвержденных клиентских заказов (ID-клиента отправителя... confirmed-order)
+    private static final String USER_SEND_QUEUE = "send-user"; //TODO: Очередь уже подтвержденных клиентских заказов (ID-клиента отправителя... confirmed-order)
 
     @Autowired
     ConnectionFactory connectionFactory;
@@ -19,7 +19,7 @@ public class MessagingConfiguration {
     public JmsTemplate jmsTemplate(){
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactory);
-        template.setDefaultDestinationName(ORDER_CONFIRMED_QUEUE);
+        template.setDefaultDestinationName(USER_SEND_QUEUE);
         return template;
     }
 }
