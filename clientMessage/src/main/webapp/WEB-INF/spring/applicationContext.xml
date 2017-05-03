@@ -23,9 +23,6 @@
     <!-- enable processing of annotations such as @Autowired and @Configuration -->
     <context:annotation-config/>
 
-    <!--<import resource="db-derby-config.xml"/> -->
-    <!--<import resource="db-h2-config.xml"/>-->
-    <!--<import resource="db-hsqldb-config.xml"/>-->
     <import resource="db-context.xml"/>
     <import resource="jms-context.xml"/>
 

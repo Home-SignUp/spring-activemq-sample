@@ -6,55 +6,10 @@
 	        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-    <bean id="userDao" class="com.order.dao.UserDaoImpl" >
-		<property name="namedParameterJdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
-		 <!--<constructor-arg ref="dbcpDataSource" />-->
         <constructor-arg ref="dataSource" />
 	</bean>
 
-    <!--<bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">-->
-        <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver" />-->
-        <!--<property name="url" value="jdbc:hsqldb:mem:dataSource" />-->
-        <!--<property name="username" value="sa" />-->
-        <!--<property name="password" value="" />-->
-    <!--</bean>-->
-
-    <!-- http://stackoverflow.com/questions/11144369/jdbcembedded-database-in-context-xml-does-not-work-want-to-to-start-an-sql-s  -->
-    <!-- http://www.javavillage.in/hsql-db-sample-example.php                                                                      -->
-    <!-- https://www.mkyong.com/spring/spring-embedded-database-examples                                                           -->
-    <!--  > d:                                                        -->
-    <!--  > cd D:\server\hsqldb\lib>                                  -->
-    <!--  > java -cp hsqldb.jar org.hsqldb.util.DatabaseManagerSwing  -->
-    <!--  jdbc:hsqldb:file:D:\server\HSQLDB\gup                       -->
-    <!-- http://stackoverflow.com/questions/34133387/org-hsqldb-hsqlexception-connection-exception-connection-failure-java-io-eofe -->
-    <!-- http://whileonefork.blogspot.com/2012/11/unit-testing-with-in-memory-database.html                                        -->
-    <!-- http://stackoverflow.com/questions/24822413/embedded-hsqldb-persist-data-to-a-file        -->
-    <!-- https://trac.i2p2.de/ticket/1127                                                          -->
-    <!-- http://stackoverflow.com/questions/26477218/database-lock-acquisition-failure-with-hsqldb -->
-    <!--<bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" depends-on="dataSource">-->
-        <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver" />-->
-        <!--<property name="url" value="jdbc:hsqldb:file:D:\server\HSQLDB\gup" />-->
-        <!--<property name="username" value="SA" />-->
-        <!--<property name="password" value="" />-->
-        <!--<property name="initialSize" value="5"/>-->
-        <!--<property name="maxIdle" value="-1"/>-->
-        <!--<property name="minIdle" value="5"/>-->
-    <!--</bean>-->
-
-    <!-- https://www.mkyong.com/spring/maven-spring-jdbc-example                                                                   -->
-    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
-        <!--<property name="url" value="jdbc:mysql://localhost:3306/spring_activemq_sample" />-->
-        <!--<property name="username" value="root" />-->
-        <!--<property name="password" value="1978" />-->
-    <!--</bean>-->
-
-    <!-- http://mrbool.com/rest-server-with-spring-data-spring-boot-and-postgresql/34023                                           -->
-    <!-- https://habrahabr.ru/post/257223                                                                                          -->
-    <!-- https://www.bund-lemgo.de/articles/posts/eclipse-spring-jdbc-tutorial-en.html                                             -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
         <property name="url" value="jdbc:postgresql://localhost:5432/spring_activemq_sample" />
