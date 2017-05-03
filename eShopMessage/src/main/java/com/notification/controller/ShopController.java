@@ -14,7 +14,7 @@ public class ShopController {
 
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
     public String prepareProduct(ModelMap model) {
-        return "confirmOrder";
+        return "confirmNotification";
     }
 
 }

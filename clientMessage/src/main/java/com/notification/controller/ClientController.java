@@ -29,17 +29,17 @@ public class ClientController {
 		return "index";
 	}
 
-	@RequestMapping(value = { "/newOrder" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/newNotification" }, method = RequestMethod.GET)
 	public String prepareOrder(ModelMap model) {
 		User user = new User();
 		model.addAttribute("order", user);
-		return "createOrder";
+		return "createNotification";
 	}
 
-	@RequestMapping(value = { "/newOrder" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/newNotification" }, method = RequestMethod.POST)
 	public String sendOrder(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "createOrder";
+			return "createNotification";
 		}
 		userService.sendUser(user);
 		model.addAttribute("success", "Ваше уведомление " + user.getProductName() + " отправлено");
@@ -49,16 +49,6 @@ public class ClientController {
 	@RequestMapping(value = { "/checkStatus" }, method = RequestMethod.GET)
 	public String checkOrderStatus(ModelMap model) {
 		model.addAttribute("orders", userService.getAllUsers());
-		return "orderStatus";
+		return "notificationStatus";
 	}
-
-    @RequestMapping(value = "/api-1", method = RequestMethod.GET)
-    public String welcome(Model model) {
-        logger.debug("order");
-
-        model.addAttribute("orders", userService.getAllUsers());
-
-        return "orderData";
-    }
-
 }
