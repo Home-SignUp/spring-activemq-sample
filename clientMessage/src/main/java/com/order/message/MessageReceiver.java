@@ -11,7 +11,7 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
 import com.order.model.InventoryResponse;
-import com.order.service.OrderService;
+import com.order.service.UserService;
 
 @Component
 public class MessageReceiver {
@@ -20,7 +20,7 @@ public class MessageReceiver {
     private static final String ORDER_CONFIRMED_QUEUE = "confirmed-order"; //TODO Очередь уже подтвержденных клиентских заказов
 	
 	@Autowired
-	OrderService orderService;
+    UserService userService;
 
     /*
      * 'receive' == он же метод 'onMessage()'...
@@ -36,7 +36,7 @@ public class MessageReceiver {
 		InventoryResponse response = message.getPayload();
 		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
 		
-		orderService.updateOrder(response);
+		userService.updateUser(response);
         LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 }

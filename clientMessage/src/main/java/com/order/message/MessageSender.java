@@ -10,7 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import com.order.model.Order;
+import com.order.model.User;
 
 @Component
 public class MessageSender {
@@ -18,7 +18,7 @@ public class MessageSender {
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	public void sendMessage(final Order order) { //TODO: 1 - (Order) User
+	public void sendMessage(final User user) { //TODO: 1 - (Order) User
                                                  //TODO: 2 - передавать нужно не <User>, а специальную информацию об сообщения (в качестве юзера создавать его ID-канала)
         /**
          * Доставка сообщений выполняется в рамках сессии.
@@ -31,7 +31,7 @@ public class MessageSender {
 		jmsTemplate.send(new MessageCreator(){
 				@Override
 				public Message createMessage(Session session) throws JMSException{
-					ObjectMessage objectMessage = session.createObjectMessage(order);
+					ObjectMessage objectMessage = session.createObjectMessage(user);
 					return objectMessage;
 				}
 			});

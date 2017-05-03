@@ -9,8 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.order.model.Order;
-import com.order.service.OrderService;
+import com.order.model.User;
+import com.order.service.UserService;
 import org.springframework.ui.Model;
 
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class ClientController {
     private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
 	@Autowired
-	OrderService orderService;
+    UserService userService;
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String prepareProduct(ModelMap model) {
@@ -31,24 +31,24 @@ public class ClientController {
 
 	@RequestMapping(value = { "/newOrder" }, method = RequestMethod.GET)
 	public String prepareOrder(ModelMap model) {
-		Order order = new Order();
-		model.addAttribute("order", order);
+		User user = new User();
+		model.addAttribute("order", user);
 		return "createOrder";
 	}
 
 	@RequestMapping(value = { "/newOrder" }, method = RequestMethod.POST)
-	public String sendOrder(@Valid Order order, BindingResult result, ModelMap model) {
+	public String sendOrder(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "createOrder";
 		}
-		orderService.sendOrder(order);
-		model.addAttribute("success", "Ваш заказ " + order.getProductName() + " отправлен");
+		userService.sendUser(user);
+		model.addAttribute("success", "Ваш заказ " + user.getProductName() + " отправлен");
 		return "success";
 	}
 	
 	@RequestMapping(value = { "/checkStatus" }, method = RequestMethod.GET)
 	public String checkOrderStatus(ModelMap model) {
-		model.addAttribute("orders", orderService.getAllOrders());
+		model.addAttribute("orders", userService.getAllUsers());
 		return "orderStatus";
 	}
 
@@ -56,7 +56,7 @@ public class ClientController {
     public String welcome(Model model) {
         logger.debug("order");
 
-        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("orders", userService.getAllUsers());
 
         return "orderData";
     }

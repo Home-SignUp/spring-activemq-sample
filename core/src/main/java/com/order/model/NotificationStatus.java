@@ -1,6 +1,6 @@
 package com.order.model;
 
-public enum OrderStatus {
+public enum NotificationStatus {
 
 	CREATED("Created"),
     PENDING("Pending"),
@@ -9,7 +9,7 @@ public enum OrderStatus {
 
     private String status;
 
-    private OrderStatus(final String status){
+    private NotificationStatus(final String status){
         this.status = status;
     }
      

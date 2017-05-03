@@ -2,7 +2,7 @@ package com.order.service;
 
 import java.util.Map;
 
-import com.order.dao.OrderRepository;
+import com.order.dao.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,29 +10,29 @@ import org.springframework.stereotype.Service;
 
 import com.order.message.MessageSender;
 import com.order.model.InventoryResponse;
-import com.order.model.Order;
-import com.order.model.OrderStatus;
+import com.order.model.User;
+import com.order.model.NotificationStatus;
 import com.order.util.BasicUtil;
 
 @Service("orderService")
-public class OrderServiceImpl implements OrderService{
+public class UserServiceImpl implements UserService {
 
-	static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
+	static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Autowired
 	MessageSender messageSender;
 	
 	@Autowired
-    OrderRepository orderRepository;
+    UserRepository userRepository;
 	
 	@Override
-	public void sendOrder(Order order) {
+	public void sendUser(User user) {
         LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
-		order.setOrderId(BasicUtil.getUniqueId());
-		order.setStatus(OrderStatus.CREATED);
-		orderRepository.putOrder(order);
-		LOG.debug("Application : sending order request {}", order);
-		messageSender.sendMessage(order);
+		user.setOrderId(BasicUtil.getUniqueId());
+		user.setStatus(NotificationStatus.CREATED);
+		userRepository.putUser(user);
+		LOG.debug("Application : sending order request {}", user);
+		messageSender.sendMessage(user);
         LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 
@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService{
      * (но Spring умеет эммитировать только временный репозиторий базы данных...)
      */
 	@Override
-	public void updateOrder(InventoryResponse response) {
+	public void updateUser(InventoryResponse response) {
 //        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        System.err.println( response );
 //        System.err.println("-------------------------------------------------------");
@@ -53,21 +53,21 @@ public class OrderServiceImpl implements OrderService{
 //        System.err.println( orderRepository.getOrder(response.getOrderId()) );
 //        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-		Order order = orderRepository.getOrder(response.getOrderId());
+		User user = userRepository.getUser(response.getOrderId());
 
 		if(response.getReturnCode()==200) {
-			order.setStatus(OrderStatus.CONFIRMED);
+			user.setStatus(NotificationStatus.CONFIRMED);
 		} else if(response.getReturnCode()==300) {
-			order.setStatus(OrderStatus.FAILED);
+			user.setStatus(NotificationStatus.FAILED);
 		} else {
-			order.setStatus(OrderStatus.PENDING);
+			user.setStatus(NotificationStatus.PENDING);
 		}
-        orderRepository.updateOrder(order);
+        userRepository.updateUser(user);
 	}
 
     @Override
-	public Map<String, Order> getAllOrders(){
-		return orderRepository.getAllOrders();
+	public Map<String, User> getAllUsers(){
+		return userRepository.getAllUsers();
 	}
 
 }

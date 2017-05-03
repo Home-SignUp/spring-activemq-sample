@@ -10,8 +10,8 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
-import com.order.model.Order;
-import com.order.service.OrderInventoryService;
+import com.order.model.User;
+import com.order.service.UserInventoryService;
 
 @Component
 public class MessageReceiver {
@@ -20,7 +20,7 @@ public class MessageReceiver {
     private static final String ORDER_NEW_QUEUE = "new-order"; //TODO Очередь новых клиентских заказов
 	
 	@Autowired
-	OrderInventoryService orderInventoryService;
+    UserInventoryService userInventoryService;
 
     /*
      * 'receive' == он же метод 'onMessage()'...
@@ -28,15 +28,15 @@ public class MessageReceiver {
      * 'onMessage()' - это дефолтный метод он слушает-получает (обрабатывает) все сообщения которые адресуемые этому клиенту
      */
 	@JmsListener(destination = ORDER_NEW_QUEUE)
-	public void receiveMessage(final Message<Order> message) throws JMSException {
+	public void receiveMessage(final Message<User> message) throws JMSException {
         LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		MessageHeaders headers =  message.getHeaders();
 		LOG.info("Магазин ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
 		
-		Order order = message.getPayload();
-		LOG.info("Магазин ПОЛУЧЕННЫЙ (ORDER): {}", order); //TODO: по ID-юзера вытаскивать сообщения которые ему адрессуются
+		User user = message.getPayload();
+		LOG.info("Магазин ПОЛУЧЕННЫЙ (ORDER): {}", user); //TODO: по ID-юзера вытаскивать сообщения которые ему адрессуются
 
-		orderInventoryService.processOrder(order);
+		userInventoryService.processUser(user);
         LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 }

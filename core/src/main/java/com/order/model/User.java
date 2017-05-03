@@ -2,12 +2,12 @@ package com.order.model;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class User implements Serializable {
 
 	private String     orderId;
 	private String productName;
 	private int       quantity;
-	private OrderStatus status;
+	private NotificationStatus status;
 
 	public String getOrderId() {
 		return orderId;
@@ -33,11 +33,11 @@ public class Order implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public OrderStatus getStatus() {
+	public NotificationStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(OrderStatus status) {
+	public void setStatus(NotificationStatus status) {
 		this.status = status;
 	}
 
@@ -57,7 +57,7 @@ public class Order implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Order other = (Order) obj;
+		User other = (User) obj;
 		if (orderId == null) {
 			if (other.orderId != null)
 				return false;
