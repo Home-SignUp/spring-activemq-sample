@@ -23,8 +23,8 @@ public class UserRepositoryImpl implements UserRepository {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM users WHERE id=:id",
             FIND_ALL_QUERY = "SELECT * FROM users",
-            INSERT_QUERY = "INSERT INTO users (id,publicId,message,status) VALUES (:id,:publicId,:message,:status)",
-            UPDATE_QUERY = "UPDATE users SET publicId=:publicId,message=:message,status=:status WHERE id=:id";
+            INSERT_QUERY = "INSERT INTO users (id,publicId,status) VALUES (:id,:publicId,:status)",
+            UPDATE_QUERY = "UPDATE users SET publicId=:publicId,status=:status WHERE id=:id";
 
     @Autowired
     public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
@@ -36,7 +36,6 @@ public class UserRepositoryImpl implements UserRepository {
         Map namedParameters = new HashMap();
         namedParameters.put("id", user.getId());
         namedParameters.put("publicId", Integer.valueOf(user.getPublicId()));
-        namedParameters.put("message", user.getMessage());
         namedParameters.put("status", user.getStatus().getName());
         namedParameterJdbcTemplate.update(INSERT_QUERY, namedParameters);
     }
@@ -46,7 +45,6 @@ public class UserRepositoryImpl implements UserRepository {
         Map namedParameters = new HashMap();
         namedParameters.put("id", user.getId());
         namedParameters.put("publicId", Integer.valueOf(user.getPublicId()));
-        namedParameters.put("message", user.getMessage());
         namedParameters.put("status", user.getStatus().getName());
         namedParameterJdbcTemplate.update(UPDATE_QUERY, namedParameters);
     }
@@ -78,7 +76,6 @@ public class UserRepositoryImpl implements UserRepository {
             User user = new User();
             user.setId(rs.getString("id"));
             user.setPublicId(rs.getInt("publicId"));
-            user.setMessage(rs.getString("message"));
             user.setStatus(NotificationStatus.valueOf(rs.getString("status")));
 
             return user;

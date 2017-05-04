@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 import com.notification.model.User;
 import com.notification.service.UserInventoryService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class MessageReceiver {
 
@@ -22,7 +25,7 @@ public class MessageReceiver {
 	@Autowired
     UserInventoryService userInventoryService;
 
-    User USER;
+    Map<String, User> users = new HashMap<String, User>();
 
     /*
      * 'receive' == он же метод 'onMessage()'...
@@ -38,7 +41,7 @@ public class MessageReceiver {
         System.err.println("Получатель ПОЛУЧЕННЫЙ 'HEADERS': " + headers);
 		
 		User user = message.getPayload();
-        USER = user;
+        users.put(user.getId(), user);
 //		LOG.info("Получатель ПОЛУЧЕННЫЙ (USER): {}", user); //TODO: по ID-юзера вытаскивать сообщения которые ему адрессуются
         System.err.println("Получатель ПОЛУЧЕННЫЙ (USER): " + user);
 
@@ -47,7 +50,7 @@ public class MessageReceiver {
         System.err.println("Получает получатель после отправки уведомления >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 
-    public User getUSER() {
-        return USER;
+    public Map<String, User> getUsers() {
+        return users;
     }
 }

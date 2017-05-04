@@ -12,7 +12,28 @@
     <body>
         <div class="generic-container">
             <div class="alert alert-success lead">
-                Уведомление ${user.message} успешно доставлено!
+                Уведомления успешно доставлены!
+            </div>
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Публичный-ID</th>
+                    <th>Уведомление</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${users}" var="entry">
+                    <tr>
+                        <td>${entry.value.publicId}</td>
+                        <td>${entry.value.message}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="form-actions floatRight">
+                    <input type="button" value="Проверить" onclick="location.href = '<c:url value="/" />';" class="btn btn-primary btn-sm"/>
+                </div>
             </div>
         </div>
     </body>

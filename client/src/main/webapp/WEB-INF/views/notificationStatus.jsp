@@ -17,18 +17,14 @@
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Получатель (ID)</th>
-                    <th>Публичный-ID</th>
-					<th>Уведомление</th>
+                    <th>Получатель (Публичный-ID)</th>
 					<th>Состояние</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${users}" var="entry">
 				<tr>
-					<td>${entry.key}</td>
                     <td>${entry.value.publicId}</td>
-					<td>${entry.value.message}</td>
 					<td>${entry.value.status}</td>
 				</tr>
 				</c:forEach>
@@ -39,7 +35,7 @@
                 <input type="button" value="Написать уведомление" onclick="location.href = '<c:url value="/newNotification" />';" class="btn btn-primary btn-sm"/>
             </div>
             <div class="form-actions floatRight">
-                <input type="button" value="Проверить состояние" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
+                <input type="button" value="Проверить доставку" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
             </div>
         </div>
 	</div>

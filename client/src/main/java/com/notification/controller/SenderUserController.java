@@ -41,7 +41,7 @@ public class SenderUserController {
 			return "createNotification";
 		}
 		userService.sendUser(user);
-		model.addAttribute("success", "Ваше уведомление " + user.getMessage() + " отправлено");
+		model.addAttribute("success", "Ваше уведомление для получателя #" + user.getPublicId() + " отправлено");
 		return "success";
 	}
 	
