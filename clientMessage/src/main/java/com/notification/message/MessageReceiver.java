@@ -17,7 +17,7 @@ import com.notification.service.UserService;
 public class MessageReceiver {
 
     static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
-    private static final String USER_SEND_QUEUE = "send-user"; //TODO Очередь уже подтвержденных клиентских заказов
+    private static final String USER_SEND_QUEUE = "sender"; //TODO Очередь уже подтвержденных клиентских заказов
 	
 	@Autowired
     UserService userService;
