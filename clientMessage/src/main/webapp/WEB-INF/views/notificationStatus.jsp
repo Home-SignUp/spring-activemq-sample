@@ -17,16 +17,18 @@
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>ID-Получателя</th>
+					<th>Получатель (ID)</th>
+                    <th>Публичный-ID</th>
 					<th>Уведомление</th>
 					<th>Состояние</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${orders}" var="entry">
+				<c:forEach items="${users}" var="entry">
 				<tr>
 					<td>${entry.key}</td>
-					<td>${entry.value.productName}</td>
+                    <td>${entry.value.publicId}</td>
+					<td>${entry.value.message}</td>
 					<td>${entry.value.status}</td>
 				</tr>
 				</c:forEach>

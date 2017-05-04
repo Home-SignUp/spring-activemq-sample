@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.notification.model.User;
 import com.notification.service.UserService;
-import org.springframework.ui.Model;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Controller
-public class ClientController {
+public class SenderUserController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
+    private static final Logger logger = LoggerFactory.getLogger(SenderUserController.class);
 
 	@Autowired
     UserService userService;
@@ -30,25 +29,25 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = { "/newNotification" }, method = RequestMethod.GET)
-	public String prepareOrder(ModelMap model) {
+	public String prepareUser(ModelMap model) {
 		User user = new User();
-		model.addAttribute("order", user);
+		model.addAttribute("user", user);
 		return "createNotification";
 	}
 
 	@RequestMapping(value = { "/newNotification" }, method = RequestMethod.POST)
-	public String sendOrder(@Valid User user, BindingResult result, ModelMap model) {
+	public String sendUser(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "createNotification";
 		}
 		userService.sendUser(user);
-		model.addAttribute("success", "Ваше уведомление " + user.getProductName() + " отправлено");
+		model.addAttribute("success", "Ваше уведомление " + user.getMessage() + " отправлено");
 		return "success";
 	}
 	
 	@RequestMapping(value = { "/checkStatus" }, method = RequestMethod.GET)
-	public String checkOrderStatus(ModelMap model) {
-		model.addAttribute("orders", userService.getAllUsers());
+	public String checkUserStatus(ModelMap model) {
+		model.addAttribute("users", userService.getAllUsers());
 		return "notificationStatus";
 	}
 }

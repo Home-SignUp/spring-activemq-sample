@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void sendUser(User user) {
         LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
-		user.setUserId(BasicUtil.getUniqueId());
+		user.setId(BasicUtil.getUniqueId());
 		user.setStatus(NotificationStatus.CREATED);
 		userRepository.putUser(user);
 		LOG.debug("Application : sending order request {}", user);

@@ -21,10 +21,10 @@ import java.util.Map;
 public class UserRepositoryImpl implements UserRepository {
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    private static final String FIND_BY_ID_QUERY = "SELECT * FROM users WHERE userId=:userId",
+    private static final String FIND_BY_ID_QUERY = "SELECT * FROM users WHERE id=:id",
             FIND_ALL_QUERY = "SELECT * FROM users",
-            INSERT_QUERY = "INSERT INTO users (userId,productName,quantity,status) VALUES (:userId,:productName,:quantity,:status)",
-            UPDATE_QUERY = "UPDATE users SET productName=:productName,quantity=:quantity,status=:status WHERE userId=:userId";
+            INSERT_QUERY = "INSERT INTO users (id,publicId,message,status) VALUES (:id,:publicId,:message,:status)",
+            UPDATE_QUERY = "UPDATE users SET publicId=:publicId,message=:message,status=:status WHERE id=:id";
 
     @Autowired
     public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
@@ -34,9 +34,9 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void putUser(User user) {
         Map namedParameters = new HashMap();
-        namedParameters.put("userId", user.getUserId());
-        namedParameters.put("productName", user.getProductName());
-        namedParameters.put("quantity", Integer.valueOf(user.getQuantity()));
+        namedParameters.put("id", user.getId());
+        namedParameters.put("publicId", Integer.valueOf(user.getPublicId()));
+        namedParameters.put("message", user.getMessage());
         namedParameters.put("status", user.getStatus().getName());
         namedParameterJdbcTemplate.update(INSERT_QUERY, namedParameters);
     }
@@ -44,17 +44,17 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void updateUser(User user) {
         Map namedParameters = new HashMap();
-        namedParameters.put("userId", user.getUserId());
-        namedParameters.put("productName", user.getProductName());
-        namedParameters.put("quantity", Integer.valueOf(user.getQuantity()));
+        namedParameters.put("id", user.getId());
+        namedParameters.put("publicId", Integer.valueOf(user.getPublicId()));
+        namedParameters.put("message", user.getMessage());
         namedParameters.put("status", user.getStatus().getName());
         namedParameterJdbcTemplate.update(UPDATE_QUERY, namedParameters);
     }
 
     @Override
-    public User getUser(String userId) {
+    public User getUser(String id) {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("userId", userId);
+        params.put("id", id);
         User result = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID_QUERY, params, new UserMapper());
 
         return result;
@@ -67,7 +67,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         Map<String, User> users = new HashMap<String, User>();
         for (User user : result)
-            users.put(user.getUserId(), user);
+            users.put(user.getId(), user);
 
         return users;
     }
@@ -76,9 +76,9 @@ public class UserRepositoryImpl implements UserRepository {
         @Override
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user = new User();
-            user.setUserId(rs.getString("userId"));
-            user.setProductName(rs.getString("productName"));
-            user.setQuantity(rs.getInt("quantity"));
+            user.setId(rs.getString("id"));
+            user.setPublicId(rs.getInt("publicId"));
+            user.setMessage(rs.getString("message"));
             user.setStatus(NotificationStatus.valueOf(rs.getString("status")));
 
             return user;

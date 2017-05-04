@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class ShopController {
+public class ReceiverUserController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ShopController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReceiverUserController.class);
 
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-    public String prepareProduct(ModelMap model) {
+    public String prepareMessage(ModelMap model) {
         return "confirmNotification";
     }
 

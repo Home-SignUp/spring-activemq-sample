@@ -15,25 +15,25 @@
 
  	<div class="generic-container">
 	<div class="well lead">Страница нового уведомления</div>
- 	<form:form method="POST" modelAttribute="order" class="form-horizontal">
+ 	<form:form method="POST" modelAttribute="user" class="form-horizontal">
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="quantity">ID-Получателя</label>
+                <label class="col-md-3 control-lable" for="publicId">Получатель (Публичный-ID)</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="quantity" id="quantity" class="form-control input-sm" required="required"/>
+                    <form:input type="text" path="publicId" id="publicId" class="form-control input-sm" required="required"/>
                     <div class="has-error">
-                        <form:errors path="quantity" class="help-inline"/>
+                        <form:errors path="publicId" class="help-inline"/>
                     </div>
                 </div>
             </div>
         </div>
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="productName">Уведомление</label>
+				<label class="col-md-3 control-lable" for="message">Уведомление</label>
 				<div class="col-md-7">
-					<form:input type="text" path="productName" id="productName" class="form-control input-sm" required="required"/>
+					<form:input type="text" path="message" id="message" class="form-control input-sm" required="required"/>
 					<div class="has-error">
-						<form:errors path="productName" class="help-inline"/>
+						<form:errors path="message" class="help-inline"/>
 					</div>
 				</div>
 			</div>

@@ -4,33 +4,33 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-	private String     userId;
-	private String productName;
-	private int       quantity;
+	private String                 id;
+    private int              publicId;
+	private String            message;
 	private NotificationStatus status;
 
-	public String getUserId() {
-		return userId;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getProductName() {
-		return productName;
+    public int getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(int publicId) {
+        this.publicId = publicId;
+    }
+
+	public String getMessage() {
+		return message;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public NotificationStatus getStatus() {
@@ -45,7 +45,7 @@ public class User implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -58,16 +58,16 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (userId == null) {
-			if (other.userId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", productName=" + productName + ", quantity=" + quantity + ", status=" + status + "]";
+		return "User [id=" + id + ", publicId=" + publicId +", message=" + message + ", status=" + status + "]";
 	}
 }
