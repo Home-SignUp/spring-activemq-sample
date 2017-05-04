@@ -9,7 +9,7 @@ import com.notification.message.MessageSender;
 import com.notification.model.InventoryResponse;
 import com.notification.model.User;
 
-@Service("orderInventoryService")
+@Service("userInventoryService")
 public class UserInventoryServiceImpl implements UserInventoryService {
 
 	static final Logger LOG = LoggerFactory.getLogger(UserInventoryServiceImpl.class);

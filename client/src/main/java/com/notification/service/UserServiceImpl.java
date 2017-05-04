@@ -14,7 +14,7 @@ import com.notification.model.User;
 import com.notification.model.NotificationStatus;
 import com.notification.util.BasicUtil;
 
-@Service("orderService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
