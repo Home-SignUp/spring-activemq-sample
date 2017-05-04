@@ -34,8 +34,8 @@
 
     <modules>
         <module>core</module>
-        <module>clientMessage</module>
-        <module>eShopMessage</module>
+        <module>client</module>
+        <module>server</module>
     </modules>
 
     <build>
