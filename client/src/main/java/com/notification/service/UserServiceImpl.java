@@ -27,13 +27,13 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void sendUser(User user) {
-        LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        LOG.debug("Клиентский сервис в момент отправки уведомления |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 		user.setId(BasicUtil.getUniqueId());
 		user.setStatus(NotificationStatus.CREATED);
-		userRepository.putUser(user);
-		LOG.debug("Application : sending order request {}", user);
+		userRepository.putUser(user); //TODO: updateUser(user)
+		LOG.debug("Application : sending notification request {}", user);
 		messageSender.sendMessage(user);
-        LOG.debug("Клиентский сервис в момент отправки заказа |||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        LOG.debug("Клиентский сервис в момент отправки уведомления |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 
     /**

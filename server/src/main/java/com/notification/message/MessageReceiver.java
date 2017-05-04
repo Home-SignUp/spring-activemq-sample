@@ -16,11 +16,13 @@ import com.notification.service.UserInventoryService;
 @Component
 public class MessageReceiver {
 
-    static final Logger                        LOG = LoggerFactory.getLogger(MessageReceiver.class);
+//    static final Logger                        LOG = LoggerFactory.getLogger(MessageReceiver.class);
     private static final String USER_RECEIVE_QUEUE = "receiver"; //TODO Очередь новых клиентских заказов
 	
 	@Autowired
     UserInventoryService userInventoryService;
+
+    User USER;
 
     /*
      * 'receive' == он же метод 'onMessage()'...
@@ -29,14 +31,23 @@ public class MessageReceiver {
      */
 	@JmsListener(destination = USER_RECEIVE_QUEUE)
 	public void receiveMessage(final Message<User> message) throws JMSException {
-        LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//        LOG.debug("Получает получатель после отправки уведомления >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.err.println("Получает получатель после отправки уведомления >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		MessageHeaders headers =  message.getHeaders();
-		LOG.info("Магазин ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
+//		LOG.info("Получатель ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
+        System.err.println("Получатель ПОЛУЧЕННЫЙ 'HEADERS': " + headers);
 		
 		User user = message.getPayload();
-		LOG.info("Магазин ПОЛУЧЕННЫЙ (ORDER): {}", user); //TODO: по ID-юзера вытаскивать сообщения которые ему адрессуются
+        USER = user;
+//		LOG.info("Получатель ПОЛУЧЕННЫЙ (USER): {}", user); //TODO: по ID-юзера вытаскивать сообщения которые ему адрессуются
+        System.err.println("Получатель ПОЛУЧЕННЫЙ (USER): " + user);
 
 		userInventoryService.processUser(user);
-        LOG.debug("Получает магазин после отправки заказа >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//        LOG.debug("Получает получатель после отправки уведомления >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.err.println("Получает получатель после отправки уведомления >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
+
+    public User getUSER() {
+        return USER;
+    }
 }

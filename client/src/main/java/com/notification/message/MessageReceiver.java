@@ -16,7 +16,7 @@ import com.notification.service.UserService;
 @Component
 public class MessageReceiver {
 
-    static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
+//    static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
     private static final String USER_SEND_QUEUE = "sender"; //TODO Очередь уже подтвержденных клиентских заказов
 	
 	@Autowired
@@ -29,14 +29,18 @@ public class MessageReceiver {
      */
 	@JmsListener(destination = USER_SEND_QUEUE) //TODO: каждый юзер является уникальным, поэтому под каждого юзера можно создавать уникальную очередь (по ID)
 	public void receiveMessage(final Message<InventoryResponse> message) throws JMSException {
-        LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+//        LOG.debug("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        System.err.println("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		MessageHeaders headers =  message.getHeaders();
-		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
+//		LOG.debug("Отправитель ПОЛУЧЕННЫЙ 'HEADERS': {}", headers);
+        System.err.println("Отправитель ПОЛУЧЕННЫЙ 'HEADERS': " + headers);
 		
 		InventoryResponse response = message.getPayload();
-		LOG.debug("Клиент ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
+//		LOG.debug("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
+        System.err.println("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': " + response);
 		
 		userService.updateUser(response);
-        LOG.debug("Получает клиент после оформления заказа <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+//        LOG.debug("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        System.err.println("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 }

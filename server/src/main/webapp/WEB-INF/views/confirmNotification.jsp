@@ -12,7 +12,7 @@
     <body>
         <div class="generic-container">
             <div class="alert alert-success lead">
-                Уведомление успешно доставлено!
+                Уведомление ${user.message} успешно доставлено!
             </div>
         </div>
     </body>
