@@ -2,7 +2,10 @@ package com.notification.controller;
 
 import javax.validation.Valid;
 
+import com.notification.message.MessageReceiver;
+import com.notification.message.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,6 +18,14 @@ import com.notification.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
+/**
+ * @see http://www.useof.org/java/org.springframework.jms.core.JmsTemplate
+ */
+
 @Controller
 public class SenderUserController {
 
@@ -22,6 +33,13 @@ public class SenderUserController {
 
 	@Autowired
     UserService userService;
+
+    @Autowired
+    private MessageReceiver messageReceiver;
+
+    @Autowired
+    JmsTemplate jmsTemplate;
+
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String prepareProduct(ModelMap model) {
@@ -41,13 +59,29 @@ public class SenderUserController {
 			return "createNotification";
 		}
 		userService.sendUser(user);
-		model.addAttribute("success", "Ваше уведомление для получателя №" + user.getPublicId() + " отправлено");
+		model.addAttribute("success", "Уведомление для получателя №" + user.getPublicId() + " отправлено");
 		return "success";
 	}
 	
 	@RequestMapping(value = { "/checkStatus" }, method = RequestMethod.GET)
 	public String checkUserStatus(ModelMap model) {
-		model.addAttribute("users", userService.getAllUsers());
+        Map<String, User> users = new HashMap<String, User>();
+//        model.addAttribute("users", messageReceiver.getUsers()); //model.addAttribute("users", userService.getAllUsers());
+        users.putAll(userService.getUsers());
+        users.putAll(messageReceiver.getUsers());
+        model.addAttribute("users", users);
+
+        ////////////////////////////////////////////////
+        System.err.println("////////////////////////////////////////////////");
+        System.err.println("jmsTemplate.getPriority() .... " + jmsTemplate.getPriority());
+        System.err.println("jmsTemplate.getDeliveryDelay() .... " + jmsTemplate.getDeliveryDelay());
+        System.err.println("jmsTemplate.getMessageConverter() .... " + jmsTemplate.getMessageConverter().toString());
+        System.err.println("jmsTemplate.isMessageTimestampEnabled() .... " + jmsTemplate.isMessageTimestampEnabled());
+        System.err.println("jmsTemplate.isPubSubNoLocal() .... " + jmsTemplate.isPubSubNoLocal());
+        System.err.println("jmsTemplate.isPubSubDomain() .... " + jmsTemplate.isPubSubDomain());
+        System.err.println("jmsTemplate.getDestinationResolver() .... " + jmsTemplate.getDestinationResolver());
+        System.err.println("////////////////////////////////////////////////");
+        ////////////////////////////////////////////////
 		return "notificationStatus";
 	}
 }

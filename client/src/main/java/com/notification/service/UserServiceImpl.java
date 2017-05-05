@@ -1,5 +1,6 @@
 package com.notification.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.notification.dao.UserRepository;
@@ -24,6 +25,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
     UserRepository userRepository;
+
+    Map<String, User> users = new HashMap<String, User>();
 	
 	@Override
 	public void sendUser(User user) {
@@ -33,6 +36,9 @@ public class UserServiceImpl implements UserService {
 		userRepository.putUser(user); //TODO: updateUser(user)
 		LOG.debug("Application : sending notification request {}", user);
 		messageSender.sendMessage(user);
+        //////////////////////////////
+        users.put(user.getId(), user);
+        //////////////////////////////
         LOG.debug("Клиентский сервис в момент отправки уведомления |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 
@@ -45,29 +51,33 @@ public class UserServiceImpl implements UserService {
      */
 	@Override
 	public void updateUser(InventoryResponse response) {
-//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        System.err.println( response );
-//        System.err.println("-------------------------------------------------------");
-//        System.err.println( response.getOrderId() );
-//        System.err.println("-------------------------------------------------------");
-//        System.err.println( orderRepository.getOrder(response.getOrderId()) );
-//        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-		User user = userRepository.getUser(response.getUserId());
-
-		if(response.getReturnCode()==200) {
-			user.setStatus(NotificationStatus.CONFIRMED);
-		} else if(response.getReturnCode()==300) {
-			user.setStatus(NotificationStatus.FAILED);
-		} else {
-			user.setStatus(NotificationStatus.PENDING);
-		}
-        userRepository.updateUser(user);
+////        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+////        System.err.println( response );
+////        System.err.println("-------------------------------------------------------");
+////        System.err.println( response.getOrderId() );
+////        System.err.println("-------------------------------------------------------");
+////        System.err.println( orderRepository.getOrder(response.getOrderId()) );
+////        System.err.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//
+//		User user = userRepository.getUser(response.getUserId());
+//
+//		if(response.getReturnCode()==200) {
+//			user.setStatus(NotificationStatus.CONFIRMED);
+//		} else if(response.getReturnCode()==300) {
+//			user.setStatus(NotificationStatus.FAILED);
+//		} else {
+//			user.setStatus(NotificationStatus.PENDING);
+//		}
+//        userRepository.updateUser(user);
 	}
 
     @Override
 	public Map<String, User> getAllUsers(){
 		return userRepository.getAllUsers();
 	}
+
+    public Map<String, User> getUsers() {
+        return users;
+    }
 
 }

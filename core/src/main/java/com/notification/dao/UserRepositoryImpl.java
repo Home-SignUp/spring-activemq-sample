@@ -23,8 +23,8 @@ public class UserRepositoryImpl implements UserRepository {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM users WHERE id=:id",
             FIND_ALL_QUERY = "SELECT * FROM users",
-            INSERT_QUERY = "INSERT INTO users (id,publicId,status) VALUES (:id,:publicId,:status)",
-            UPDATE_QUERY = "UPDATE users SET publicId=:publicId,status=:status WHERE id=:id";
+            INSERT_QUERY = "INSERT INTO users (id,publicId) VALUES (:id,:publicId)", //INSERT_QUERY = "INSERT INTO users (id,publicId,status) VALUES (:id,:publicId,:status)",
+            UPDATE_QUERY = "UPDATE users SET publicId=:publicId WHERE id=:id"; //UPDATE_QUERY = "UPDATE users SET publicId=:publicId,status=:status WHERE id=:id";
 
     @Autowired
     public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
@@ -36,7 +36,7 @@ public class UserRepositoryImpl implements UserRepository {
         Map namedParameters = new HashMap();
         namedParameters.put("id", user.getId());
         namedParameters.put("publicId", Integer.valueOf(user.getPublicId()));
-        namedParameters.put("status", user.getStatus().getName());
+//        namedParameters.put("status", user.getStatus().getName());
         namedParameterJdbcTemplate.update(INSERT_QUERY, namedParameters);
     }
 
@@ -45,7 +45,7 @@ public class UserRepositoryImpl implements UserRepository {
         Map namedParameters = new HashMap();
         namedParameters.put("id", user.getId());
         namedParameters.put("publicId", Integer.valueOf(user.getPublicId()));
-        namedParameters.put("status", user.getStatus().getName());
+//        namedParameters.put("status", user.getStatus().getName());
         namedParameterJdbcTemplate.update(UPDATE_QUERY, namedParameters);
     }
 
@@ -76,7 +76,7 @@ public class UserRepositoryImpl implements UserRepository {
             User user = new User();
             user.setId(rs.getString("id"));
             user.setPublicId(rs.getInt("publicId"));
-            user.setStatus(NotificationStatus.valueOf(rs.getString("status")));
+//            user.setStatus(NotificationStatus.valueOf(rs.getString("status")));
 
             return user;
         }

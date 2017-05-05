@@ -2,6 +2,9 @@ package com.notification.message;
 
 import javax.jms.JMSException;
 
+import com.notification.dao.UserRepository;
+import com.notification.model.NotificationStatus;
+import com.notification.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,9 @@ import org.springframework.stereotype.Component;
 import com.notification.model.InventoryResponse;
 import com.notification.service.UserService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class MessageReceiver {
 
@@ -21,6 +27,11 @@ public class MessageReceiver {
 	
 	@Autowired
     UserService userService;
+
+    @Autowired
+    UserRepository userRepository;
+
+    Map<String, User> users = new HashMap<String, User>();
 
     /*
      * 'receive' == он же метод 'onMessage()'...
@@ -36,6 +47,17 @@ public class MessageReceiver {
         System.err.println("Отправитель ПОЛУЧЕННЫЙ 'HEADERS': " + headers);
 		
 		InventoryResponse response = message.getPayload();
+        //////////////////////////////
+        User user = userRepository.getUser(response.getUserId());
+        if(response.getReturnCode()==200) {
+            user.setStatus(NotificationStatus.CONFIRMED);
+        } else if(response.getReturnCode()==300) {
+            user.setStatus(NotificationStatus.FAILED);
+        } else {
+            user.setStatus(NotificationStatus.PENDING);
+        }
+        users.put(user.getId(), user);
+        //////////////////////////////
 //		LOG.debug("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
         System.err.println("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': " + response);
 		
@@ -43,4 +65,8 @@ public class MessageReceiver {
 //        LOG.debug("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         System.err.println("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
+
+    public Map<String, User> getUsers() {
+        return users;
+    }
 }

@@ -11,4 +11,6 @@ public interface UserService {
 	public void updateUser(InventoryResponse response);
 	
 	public Map<String, User> getAllUsers();
+
+    public Map<String, User> getUsers();
 }

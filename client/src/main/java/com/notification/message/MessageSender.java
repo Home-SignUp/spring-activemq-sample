@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 import com.notification.model.User;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class MessageSender {
 

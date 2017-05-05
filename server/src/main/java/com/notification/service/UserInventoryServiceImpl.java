@@ -19,20 +19,18 @@ public class UserInventoryServiceImpl implements UserInventoryService {
 	
 	@Override
 	public void processUser(User user) {
-		/* Perform any business logic. */
+		//TODO: Perform any business logic.
 		InventoryResponse response = prepareResponse(user);
-		LOG.info("Магазин: ПОЛУЧЕНИЯ КЛИЕНТСКОГО ЗАКАЗА ПОДТВЕРЖДЕНО", response);
+		LOG.info("Получатель: ПОЛУЧЕНИЯ КЛИЕНТСКОГО УВЕДОМЛЕНИЯ ПОДТВЕРЖДЕНО", response);
 		messageSender.sendMessage(response);
 	}
 
-    /**
-     * Эммитация получения ответа от клиента:
-     */
 	private InventoryResponse prepareResponse(User user) {
+        //TODO: Эммитация получения ответа от клиента
 		InventoryResponse response = new InventoryResponse();
 		response.setUserId(user.getId());
 		response.setReturnCode(200);
-		response.setComment("Магазин: КЛИЕНТСКИЙ ЗАКАЗ УСПЕШНО ОБРАБОТАН!!!"); //TODO еще сюда можно передать информацию об пользовательском уведомлении
+		response.setComment("Получатель: КЛИЕНТСКОЕ УВЕДОМЛЕНИЕ УСПЕШНО ОБРАБОТАНО!!!"); //TODO еще сюда можно передать информацию об пользовательском уведомлении
 		return response;
 	}
 }
