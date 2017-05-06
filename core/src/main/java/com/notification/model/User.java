@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 	private String                 id;
-    private int              publicId;
+    private String           publicId;
 	private String            message;
 	private NotificationStatus status;
 
@@ -17,11 +17,11 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-    public int getPublicId() {
+    public String getPublicId() {
         return publicId;
     }
 
-    public void setPublicId(int publicId) {
+    public void setPublicId(String publicId) {
         this.publicId = publicId;
     }
 

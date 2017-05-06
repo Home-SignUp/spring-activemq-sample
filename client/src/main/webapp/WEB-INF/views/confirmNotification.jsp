@@ -24,7 +24,7 @@
 			<tbody>
 				<c:forEach items="${users}" var="entry">
 				<tr>
-                    <td>№${entry.value.publicId}</td>
+                    <td>№ ${entry.value.publicId}</td>
 					<td>${entry.value.status}</td>
 				</tr>
 				</c:forEach>
