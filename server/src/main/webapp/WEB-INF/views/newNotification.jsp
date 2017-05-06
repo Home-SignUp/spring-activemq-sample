@@ -11,20 +11,18 @@
 
     <body>
         <div class="generic-container">
-            <div class="alert alert-success lead">
-                Уведомления успешно доставлены!
-            </div>
+            <div class="alert alert-success lead">Новые уведомления</div>
             <table class="table table-hover table-striped">
                 <thead>
                 <tr>
-                    <th>Публичный-ID</th>
-                    <th>Уведомление</th>
+                    <th>Публичный-ID (Отправитель)</th>
+                    <th>Уведомления</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${users}" var="entry">
                     <tr>
-                        <td>${entry.value.publicId}</td>
+                        <td>№${entry.value.publicId}</td>
                         <td>${entry.value.message}</td>
                     </tr>
                 </c:forEach>

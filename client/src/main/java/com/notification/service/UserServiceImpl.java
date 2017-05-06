@@ -26,8 +26,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
     UserRepository userRepository;
 
-    Map<String, User> users = new HashMap<String, User>();
-	
 	@Override
 	public void sendUser(User user) {
         LOG.debug("Клиентский сервис в момент отправки уведомления |||||||||||||||||||||||||||||||||||||||||||||||||||||");
@@ -35,10 +33,7 @@ public class UserServiceImpl implements UserService {
 		user.setStatus(NotificationStatus.CREATED);
 		userRepository.putUser(user); //TODO: updateUser(user)
 		LOG.debug("Application : sending notification request {}", user);
-		messageSender.sendMessage(user);
-        //////////////////////////////
-        users.put(user.getId(), user);
-        //////////////////////////////
+		messageSender.onMessage(user);
         LOG.debug("Клиентский сервис в момент отправки уведомления |||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 
@@ -75,9 +70,5 @@ public class UserServiceImpl implements UserService {
 	public Map<String, User> getAllUsers(){
 		return userRepository.getAllUsers();
 	}
-
-    public Map<String, User> getUsers() {
-        return users;
-    }
 
 }

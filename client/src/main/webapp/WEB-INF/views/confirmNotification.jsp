@@ -13,18 +13,18 @@
 
 <body>
  	<div class="generic-container">
-		<div class="well lead">Состояние уведомлений</div>
+        <div class="alert alert-success lead">Уведомления успешно доставленные</div>
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-                    <th>Получатель (Публичный-ID)</th>
+                    <th>Публичный-ID (Получатель)</th>
 					<th>Состояние</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${users}" var="entry">
 				<tr>
-                    <td>${entry.value.publicId}</td>
+                    <td>№${entry.value.publicId}</td>
 					<td>${entry.value.status}</td>
 				</tr>
 				</c:forEach>
@@ -32,10 +32,10 @@
 		</table>
         <div class="row">
             <div class="form-actions floatRight">
-                <input type="button" value="Написать уведомление" onclick="location.href = '<c:url value="/newNotification" />';" class="btn btn-primary btn-sm"/>
+                <input type="button" value="Новое уведомление" onclick="location.href = '<c:url value="/newNotification" />';" class="btn btn-primary btn-sm"/>
             </div>
             <div class="form-actions floatRight">
-                <input type="button" value="Проверить доставку" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
+                <input type="button" value="Доставленные уведомления" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
             </div>
         </div>
 	</div>

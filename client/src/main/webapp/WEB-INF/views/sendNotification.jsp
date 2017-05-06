@@ -16,10 +16,10 @@
             </div>
             <div class="row">
                 <div class="form-actions floatRight">
-                    <input type="button" value="Написать уведомление" onclick="location.href = '<c:url value="/newNotification" />';" class="btn btn-primary btn-sm"/>
+                    <input type="button" value="Новое уведомление" onclick="location.href = '<c:url value="/newNotification" />';" class="btn btn-primary btn-sm"/>
                 </div>
                 <div class="form-actions floatRight">
-                    <input type="button" value="Проверить доставку" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
+                    <input type="button" value="Доставленные уведомления" onclick="location.href = '<c:url value="/checkStatus" />';" class="btn btn-primary btn-sm"/>
                 </div>
             </div>
         </div>

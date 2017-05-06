@@ -8,6 +8,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.config.java.plugin.context.AnnotationDrivenConfig;
 
 import javax.jms.ConnectionFactory;
+import javax.jms.Session;
 
 /**
  * @see http://www.basilv.com/psd/blog/2009/java-based-configuration-of-spring-dependency-injection
@@ -28,6 +29,9 @@ public class MessagingConfiguration {
     @Autowired
     ConnectionFactory connectionFactory;
 
+    /**
+     * ( AUTO_ACKNOWLEDGE | DUPS_OK_ACKNOWLEDGE | CLIENT_ACKNOWLEDGE )
+     */
     @Bean
 ////    @Scope("singleton")
 //    @Scope("prototype")
@@ -35,6 +39,7 @@ public class MessagingConfiguration {
         JmsTemplate template = new JmsTemplate();
         template.setConnectionFactory(connectionFactory);
         template.setDefaultDestinationName(USER_RECEIVE_QUEUE);
+//        template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE); // подтверждение получения будет произведено автоматически (Параметр Session.AUTO_ACKNOWLEDGE устанавливается по умолчанию)
         return template;
     }
 

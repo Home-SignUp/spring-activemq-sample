@@ -50,26 +50,22 @@ public class SenderUserController {
 	public String prepareUser(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user", user);
-		return "createNotification";
+		return "create";
 	}
 
 	@RequestMapping(value = { "/newNotification" }, method = RequestMethod.POST)
 	public String sendUser(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "createNotification";
+			return "create";
 		}
 		userService.sendUser(user);
 		model.addAttribute("success", "Уведомление для получателя №" + user.getPublicId() + " отправлено");
-		return "success";
+		return "sendNotification";
 	}
 	
 	@RequestMapping(value = { "/checkStatus" }, method = RequestMethod.GET)
 	public String checkUserStatus(ModelMap model) {
-        Map<String, User> users = new HashMap<String, User>();
-//        model.addAttribute("users", messageReceiver.getUsers()); //model.addAttribute("users", userService.getAllUsers());
-        users.putAll(userService.getUsers());
-        users.putAll(messageReceiver.getUsers());
-        model.addAttribute("users", users);
+        model.addAttribute("users", messageReceiver.getUsers()); //model.addAttribute("users", userService.getAllUsers());
 
         ////////////////////////////////////////////////
         System.err.println("////////////////////////////////////////////////");
@@ -82,6 +78,6 @@ public class SenderUserController {
         System.err.println("jmsTemplate.getDestinationResolver() .... " + jmsTemplate.getDestinationResolver());
         System.err.println("////////////////////////////////////////////////");
         ////////////////////////////////////////////////
-		return "notificationStatus";
+		return "confirmNotification";
 	}
 }

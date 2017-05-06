@@ -24,6 +24,7 @@ public class MessageReceiver {
 
 //    static final Logger                     LOG = LoggerFactory.getLogger(MessageReceiver.class);
     private static final String USER_SEND_QUEUE = "sender"; //TODO Очередь уже подтвержденных клиентских заказов
+    private static final String USER_RECEIVE_QUEUE = "receiver"; //TODO Очередь новых клиентских заказов???????
 	
 	@Autowired
     UserService userService;
@@ -47,6 +48,10 @@ public class MessageReceiver {
         System.err.println("Отправитель ПОЛУЧЕННЫЙ 'HEADERS': " + headers);
 		
 		InventoryResponse response = message.getPayload();
+//		LOG.debug("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
+        System.err.println("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': " + response);
+		
+//		userService.updateUser(response);
         //////////////////////////////
         User user = userRepository.getUser(response.getUserId());
         if(response.getReturnCode()==200) {
@@ -58,10 +63,6 @@ public class MessageReceiver {
         }
         users.put(user.getId(), user);
         //////////////////////////////
-//		LOG.debug("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': {}", response); //TODO: проверить чтобы ID-сообщения принадлежала этому юзеру и только тогда его принимать - уведомлять о том что оно доставлено..
-        System.err.println("Отправитель ПОЛУЧЕННЫЙ 'RESPONSE': " + response);
-		
-		userService.updateUser(response);
 //        LOG.debug("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         System.err.println("Получает отправитель после отправки уведомления <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}

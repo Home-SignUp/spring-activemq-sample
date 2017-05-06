@@ -20,7 +20,7 @@ public class ReceiverUserController {
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
     public String prepareMessage(ModelMap model) {
         model.addAttribute("users", messageReceiver.getUsers());
-        return "confirmNotification";
+        return "newNotification";
     }
 
 }
